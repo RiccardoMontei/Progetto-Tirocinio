@@ -9,6 +9,8 @@ TagManager:
   - Knife
   - Animator
   - Zombie
+  - MuzzleEffect
+  - CartridgeEffect
   layers:
   - Default
   - TransparentFX

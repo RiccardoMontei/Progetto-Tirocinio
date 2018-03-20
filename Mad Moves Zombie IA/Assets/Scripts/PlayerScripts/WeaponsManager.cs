@@ -9,54 +9,28 @@ public class WeaponsManager : MonoBehaviour {
 	//Game Objects e correlati
 	public GameObject[] weapons =new GameObject[5];//Vettore delle armi
 	public GameObject[] yourWeapons = new GameObject[2];//Vettore delle 2 categorie di armi
-	public bool activeWeapon= false; //true arma primaria false arma secondaria
+	private bool activeWeapon= false; //true arma primaria false arma secondaria
 
 	//Variabili dell'animator
 	public Animator animator;
-	public AnimatorStateInfo currentState;
-
-	//Variabili di supporto al codice
-	public float deltaTime=0;//variabile per sincronizzare alcune parti di codice, che richiedono delle attese
+	
+    //Variabili di supporto al codice
 	public int bulletsShotted;//Tiene Conto di quanti proiettili del caricatore ho sparato
-	public bool isRecharged = false;//Flag che indica che è stata effettuata una ricarica
-	public float stateLeght;
-	public bool startShot=false;
 
-
-
-	void Start () {
+    void Start () {
 		animator = GameObject.FindGameObjectWithTag("Animator").GetComponent<Animator> ();//Prendo l'animator del player
-
-	}
+    }
 
 	void Update () {
-		InizializzazioneVariabiliControlli ();
-	
 		whatIsActiveWeapon ();// Controllo che arma ho in mano cambiando il vettore bool
 		WeaponsSelector();//Funzione che setta i flag per le armi nell'animator
 
-		ChangeWeapon ();//Funzione per il cambio arma
+        Shot();
+        ChangeWeapon ();//Funzione per il cambio arma
 		ReloadFunction(); //Funzione per la ricarica dell'arma
 	}
 
-	void FixedUpdate(){
-		Shot ();
-	}
-	private void InizializzazioneVariabiliControlli(){
-		deltaTime += Time.deltaTime;//Il nostro timer è perennemente incrementato è azzerato all'occorrenza
-
-		stateLeght = currentState.length;
-		currentState= animator.GetCurrentAnimatorStateInfo(0);
-		startShot = GameObject.FindGameObjectWithTag ("Animator").GetComponent<ShotFunctions> ().startShot;
-
-		if(Input.GetButtonUp("Fire1")) animator.SetBool("IsShotting",false);//Se sollevo il dito disattivo l'animazione
-		if (activeWeapon && YourWeapon ().GetComponent<WeaponsDettails> ().bulletsToShot == 0) animator.SetBool ("IsShotting", false); //Se finisco i proiettili disattivo l'animazione
-
-
-	}
-
-		
-	private void whatIsActiveWeapon(){
+    private void whatIsActiveWeapon(){
 		//Controlla che arma del vettore sia attiva
 		if (yourWeapons [0].activeSelf && yourWeapons [0].CompareTag ("PrimaryWeapon")) {
 			activeWeapon = true;
@@ -66,31 +40,16 @@ public class WeaponsManager : MonoBehaviour {
 
 	}
 	private void ReloadFunction(){
-		bulletsShotted=YourWeapon().GetComponent<WeaponsDettails>().maxBullets-YourWeapon().GetComponent<WeaponsDettails>().bulletsToShot;
-		//Se premo r
+		bulletsShotted=YourWeapon().GetComponent<WeaponsDettails>().maxBullets-YourWeapon().GetComponent<WeaponsDettails>().bulletsToShot; //Proiettili sparati
+		
 		if (Input.GetKey("r") && 
 			YourWeapon().GetComponent<WeaponsDettails>().bulletsToShot < YourWeapon().GetComponent<WeaponsDettails>().maxBullets && // e ho meno proiettili del massimo nel caricatore
 			YourWeapon().GetComponent<WeaponsDettails>().bulletsStored != 0 && // e ho proiettili conservati
 			!animator.GetBool("IsShotting") && //e non sto sparando
 			!animator.GetBool("IsReloading")) { // e non sto gia ricaricando
-			deltaTime = 0; //azzero il timer di sistema
-			isRecharged = true; // setto il flag in ricarica
-			animator.SetBool ("IsReloading", true);//Avvio L'animazione della ricarica
 
-			if(bulletsShotted <= YourWeapon().GetComponent<WeaponsDettails>().bulletsStored){
-				YourWeapon().GetComponent<WeaponsDettails>().bulletsStored -= bulletsShotted;//Diminuzione proiettili totali
-				YourWeapon ().GetComponent<WeaponsDettails> ().bulletsToShot +=bulletsShotted;//Incremento caricatore
-			}
-			else if(bulletsShotted > YourWeapon().GetComponent<WeaponsDettails>().bulletsStored){
-				bulletsShotted = YourWeapon ().GetComponent<WeaponsDettails> ().bulletsStored;
-				YourWeapon().GetComponent<WeaponsDettails>().bulletsStored -= bulletsShotted;//Diminuzione proiettili totali
-				YourWeapon ().GetComponent<WeaponsDettails> ().bulletsToShot +=bulletsShotted;//Incremento caricatore
-			}
-		}
-		if(deltaTime >= stateLeght-0.05 && isRecharged){
-			animator.SetBool ("IsReloading", false);
-			isRecharged=false;
-		}
+            animator.SetBool ("IsReloading", true);//Avvio L'animazione della ricarica
+        }
 	}
 
 	private void ChangeWeapon(){
@@ -105,37 +64,19 @@ public class WeaponsManager : MonoBehaviour {
 		}
 	}
 
-
-
-	private void Shot(){
-		GameObject Fire = GameObject.FindGameObjectWithTag ("Fire");//Cerco il fire dell'arma 
-		RaycastHit hit; //Parametro che contiene info sull'oggetto colpito
+    private void Shot(){
+		
 		if (activeWeapon) {
-			if (Input.GetButton ("Fire1") && YourWeapon ().GetComponent<WeaponsDettails> ().bulletsToShot > 0 && !startShot) {//Se sparo e ho proiettili nel caricatore
-				if (YourWeapon ().GetComponent<WeaponsDettails> ().bulletsToShot != 0 ){
-					animator.SetBool ("IsShotting", true); //Se non ho il caricatore vuoto
-				}
+			if (Input.GetButton ("Fire1") && YourWeapon ().GetComponent<WeaponsDettails> ().bulletsToShot >= 0) {//Se sparo e ho proiettili nel caricatore
+				animator.SetBool ("IsShotting", true); //Se non ho il caricatore vuoto
 			}
 		} else if (!activeWeapon) { //Con l'arma secondaria
 			if (Input.GetButton ("Fire1"))
 				animator.SetBool ("IsShotting", true);
 		}
-		if (currentState.IsTag ("Shot")) {
-			if (deltaTime >= stateLeght) {//Diminuzione proiettili in base all'animazione
-				deltaTime = 0;
-				YourWeapon ().GetComponent<WeaponsDettails> ().bulletsToShot--;//Diminuzione proiettili
-				Debug.DrawRay (Fire.transform.position, Fire.transform.forward * 300, Color.black);//Debug che mostra il raggio del raycast
-				if (Physics.Raycast (Fire.transform.position, Fire.transform.forward, out hit, 300)) {//Se il raggio colpisce qualcosa!
-					if (hit.transform.gameObject.CompareTag ("Zombie")) {//Ed è uno zombie (ancora da settare, da errore nell'editor)
-						//Logica sugli zombie
-					}
-				}
-			}
-		}  
-		if (!currentState.IsTag ("Shot")) {
-			startShot = false;
-		}
-	} 	
+        if(Input.GetButtonUp("Fire1")) animator.SetBool("IsShotting", false);//Se sollevo il dito disattivo l'animazione
+        if (activeWeapon && YourWeapon().GetComponent<WeaponsDettails>().bulletsToShot == 0) animator.SetBool("IsShotting", false); //Se finisco i proiettili disattivo l'animazione
+    } 	
 
 
 	//Funzione che setta tutti i tag delle armi false
@@ -174,7 +115,7 @@ public class WeaponsManager : MonoBehaviour {
 	
 	}
 	//Funzione d'appoggio che restituisce l'arma che si ha in mano 
-	private GameObject YourWeapon(){
+	public GameObject YourWeapon(){
 		if (activeWeapon) {
 			return yourWeapons [0];
 		} else if (!activeWeapon) {
