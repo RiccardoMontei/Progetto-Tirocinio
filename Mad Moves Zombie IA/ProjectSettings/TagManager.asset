@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Fire
+  - PrimaryWeapon
+  - Knife
+  - Animator
+  - Zombie
   layers:
   - Default
   - TransparentFX

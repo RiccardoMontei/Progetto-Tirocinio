@@ -65,7 +65,7 @@ MonoBehaviour:
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
-  m_LastLoadedLayoutName: Wide
+  m_LastLoadedLayoutName: 
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 392}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 5793
+  controlID: 23
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinSize: {x: 436, y: 392}
   m_MaxSize: {x: 14006, y: 14042}
   vertical: 1
-  controlID: 5794
+  controlID: 24
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_MinSize: {x: 436, y: 271}
   m_MaxSize: {x: 14006, y: 10021}
   vertical: 0
-  controlID: 5741
+  controlID: 55
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -286,7 +286,7 @@ MonoBehaviour:
     y: 575
     width: 524
     height: 267
-  m_MaximizeOnPlay: 1
+  m_MaximizeOnPlay: 0
   m_Gizmos: 0
   m_Stats: 0
   m_SelectedSizes: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -306,7 +306,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoom: 0
     m_UniformScale: 1
     m_UpDirection: 1
@@ -363,14 +363,14 @@ MonoBehaviour:
     width: 1054
     height: 462
   m_SceneLighting: 1
-  lastFramingTime: 3015.6853144979095
+  lastFramingTime: 1264.0968027896208
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 115.10714, y: 52.001617, z: 149.2234}
+    m_Target: {x: 117.54089, y: 51.65335, z: 151.00403}
     speed: 2
-    m_Value: {x: 115.10714, y: 52.001617, z: 149.2234}
+    m_Value: {x: 117.54089, y: 51.65335, z: 151.00403}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -393,13 +393,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0, y: 0, z: 0, w: 1}
+    m_Target: {x: 0.60718113, y: -0.20820652, z: 0.16902325, w: 0.74793893}
     speed: 2
-    m_Value: {x: -0, y: 0, z: -0, w: -1}
+    m_Value: {x: 0.6071811, y: -0.20820649, z: 0.16902323, w: 0.7479389}
   m_Size:
-    m_Target: 0.6206173
+    m_Target: 6.2594194
     speed: 2
-    m_Value: 0.6206173
+    m_Value: 6.2594194
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -440,7 +440,7 @@ MonoBehaviour:
     m_KeySerializationHelper:
     - {fileID: 1107168323659615250, guid: 84774ae96640d8c4a93ca76fb6f6fe54, type: 2}
     m_ValueSerializationHelper:
-    - {x: 600.4, y: 173.20001}
+    - {x: 664.3999, y: 273.2}
   m_PreviewAnimator: {fileID: 0}
   m_AnimatorController: {fileID: 0}
   m_BreadCrumbs: []
@@ -482,9 +482,9 @@ MonoBehaviour:
     height: 267
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 7e530000
+    m_SelectedIDs: 5e370000
     m_LastClickedID: 0
-    m_ExpandedIDs: 3867edff6a67edff9c67edff9e67edffe017eeffd099ffffdc99ffff00000000
+    m_ExpandedIDs: d6fbffffd8fbffff18fcffff00000000a8330000d8330000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -545,20 +545,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/PlayerAssets
-  m_ViewMode: 1
+    - Assets/Scripts/PlayerScripts
+  m_ViewMode: 0
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/PlayerAssets
+  - Assets/PlayerAssets/UMP5
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\Administrator\Desktop\Progetto-Tirocinio\Mad Moves Zombie
     IA
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 62}
-    m_SelectedIDs: 0a540000
-    m_LastClickedID: 21514
-    m_ExpandedIDs: 000000009e46000080470000a2470000824800001e490000244900002a4900003a49000040490000ee5300000a54000000ca9a3bffffff7f
+    m_SelectedIDs: 922c0000
+    m_LastClickedID: 11410
+    m_ExpandedIDs: 00000000fe27000092280000d2290000442a0000782b0000922c00006c2d00009e2e0000b43000003e3100006a310000aa310000b0310000f03100004432000068370000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -583,26 +583,26 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 0}
+    scrollPos: {x: 0, y: 1179}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000009e46000080470000a2470000824800001e490000244900002a4900003a49000040490000ee5300000a54000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000fe27000092280000d2290000062a0000442a0000762a0000782b0000922c00006c2d00009e2e0000583000003e3100006a310000aa310000103200004432000068370000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: WeaponsManager
+      m_OriginalName: WeaponsManager
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 2260
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 10}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -614,7 +614,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: c6230000bc45000018530000
+    m_ExpandedInstanceIDs: c6230000bc4500001853000044320000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
