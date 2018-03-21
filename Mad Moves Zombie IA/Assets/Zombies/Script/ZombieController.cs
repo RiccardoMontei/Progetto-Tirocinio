@@ -5,127 +5,106 @@ using UnityEngine;
 
 public class ZombieController : MonoBehaviour {
 
-	private NavMeshAgent agent;
+	//variabili private di oggetti collegati all npc
 	private Animator anim;
-	private bool isTriggered;
-	private float velocity;
-	private RaycastHit hit;
-	public bool isAttacking;
-	private Transform target;
+	private NavMeshAgent agent;
+
+	//variabili pubbliche da inspector
+	public Transform target; //transform destinato al player quando avvistato
+	public Transform eyesPoint; //punto da cui parte il raycast
+	public GameObject viewField; //campo visivo dello zombie;
+	public float velocity; //velocità dell'agente, pubblico per controllare lo stato da inspector
+	public bool isTriggered; //lo zombie ha avvistato il player?
+	public float rad = 5.0f; //raggio di ricerca della nuova posizione quando in stato onRest
+	public float range= 50.0f; //raggio di avvistamento del player;
+	public float speedRest = 0.3f;
+	public float speedHunt = 0.5f;
+	public Vector3 nextDest = Vector3.zero;
 
 
-	public Transform pointView;
-	public float range;
-
-	// Use this for initialization
-	void Start () {
-		agent = GetComponent<NavMeshAgent> (); //NavMeshAgent collegato all'oggetto
-		anim = GetComponent<Animator> (); //Animator degli zombie
-		isTriggered = false;	//booleano attivato in caso di avvistamento del player
-		isAttacking = false;
-		Destination();
+	void Start(){
+		anim = GetComponent<Animator> ();
+		agent = GetComponent<NavMeshAgent> ();
+		agent.SetDestination (newDestination ());
 	}
+
+	void Update(){
+
+		if (!isTriggered) {
+			OnRest ();
+		} else {
+			OnHunt ();
+		}
+
+	}
+
+
+	//funzione per il calcolo di un nuovo punto sulla navMesh
+	private Vector3 newDestination(){
+
+		Vector3 randomDir = Random.insideUnitSphere * rad; //vettore direzione random
+		randomDir += transform.position; //unisco alla attuale posizione
+
+		NavMeshHit hit; //oggetto tipo "hit" di raycast, con la funzione sampleposition, questo oggetto servirà per restituire la posizione raggiungibile random generata
+
+		if (NavMesh.SamplePosition (randomDir,out hit, rad, 1)) {
+			nextDest = hit.position; //assegno la nuova posizione da raggiungere
+		}
+
+		return nextDest;
+	}
+
+	private void OnRest(){
+		agent.speed = speedRest;
+		if (agent.stoppingDistance < agent.remainingDistance && agent.hasPath) {
+			velocity = agent.velocity.magnitude;
+			anim.SetFloat ("Velocity", agent.velocity.magnitude);
+		} else if (target == null && !agent.hasPath) {
+			anim.SetFloat ("Velocity", 0.0f);
+			agent.SetDestination (newDestination ());
+		}
+
+		if (agent.stoppingDistance >= agent.remainingDistance) {
+			agent.SetDestination (newDestination ());
+		}
+	}
+
+	private void OnHunt(){
+		velocity = agent.velocity.magnitude;
+		anim.SetFloat ("Velocity", velocity);
+		if (agent.stoppingDistance > agent.remainingDistance && Vector3.Distance (transform.position, target.position) < 2.0f) {
+			Vector3 lookingTarget = new Vector3 (target.position.x, transform.position.y, target.position.z);
+			transform.LookAt (lookingTarget);
+			anim.CrossFade ("Attack", 0f);
+		} else {
+			agent.destination = target.position;
+		}
+		if (Vector3.Distance(transform.position, target.position) >= 30f) {
+			target = null;
+			isTriggered = false;
+			agent.SetDestination (newDestination ());
+		}
+	}
+
+	public void TargetingSystem(Transform tag){
 	
-	// Update is called once per frame
-	void Update () {
+		transform.LookAt (tag.position);
+		RaycastHit hit;
 
+		if (Physics.Raycast (eyesPoint.position, eyesPoint.forward, out hit, range)) {
+			if (hit.transform.gameObject.CompareTag ("Player")) {
+				target = tag;
+				agent.isStopped = true;
+				agent.speed = 0f;
+				anim.CrossFade ("Scream", 0f);
+				agent.destination = target.position;
+				agent.speed = speedHunt;
+				isTriggered = true;
+				agent.isStopped = false;
 
-		if (isAttacking) {
-			transform.LookAt (target);
-		} else if (Physics.Raycast (pointView.position, pointView.forward, out hit, range)) {
-			if (hit.transform.gameObject.CompareTag ("Player") && !isAttacking) {
-				target = hit.transform;
-				agent.SetDestination (target.position);
-				if (!isTriggered && !isAttacking) {
-					Triggered ();
-				}
 			}
 		}
 
-		if (isTriggered) {
-			Triggered ();
-		}
-
 	}
 
-	void FixedUpdate(){
-		
-		setVelocity (agent.velocity.magnitude);
-
-		if (getVelocity() > 0) {
-
-			anim.SetFloat ("Velocity", getVelocity ());
-
-		}
-
-
-	}
-
-	private void Destination(){
-	
-		if (GameObject.Find ("First").activeInHierarchy) {
-			target = GameObject.Find ("First").transform;
-			agent.SetDestination (target.position);
-		} else if (GameObject.Find ("Second").activeInHierarchy) {
-			target = GameObject.Find ("Second").transform;
-			agent.SetDestination (target.position);
-		}
-	
-	}
-
-	private void Attacking(){
-		isAttacking = true;
-		anim.SetBool ("isAttacking", isAttacking);
-	}
-
-	private void Triggered(){
-		float dist = Vector3.Distance (transform.position, target.position);
-
-		setTrigg (true);
-		anim.SetBool ("isTriggered", getTrigg ());
-
-		if (dist <= 2.0f) {
-			setTrigg (false);
-			anim.SetBool ("isTriggered", getTrigg ());
-			agent.enabled = false;
-			Attacking ();
-		} else if (dist >= 2.0f) {
-			setTrigg (true);
-			anim.SetBool ("isTriggered", getTrigg ());
-			agent.enabled = true;
-		}
-
-	}
-
-
-	//setter della velocità
-	public void setVelocity(float v){
-		
-		velocity = v;
-
-	}
-
-
-	//getter della velocità
-	public float getVelocity(){
-		
-		return velocity;
-
-	}
-
-
-	//setter del trigger Avvistato
-	public void setTrigg(bool t){
-		
-		isTriggered = t;
-
-	}
-
-
-	//getter del trigger Avvistato
-	public bool getTrigg(){
-	
-		return isTriggered;
-	
-	}
 }

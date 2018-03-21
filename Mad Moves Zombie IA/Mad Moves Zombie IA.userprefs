@@ -1,14 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Zombies\Script\ZombieController.cs">
     <Files>
-      <File FileName="Assets\Zombies\Script\ZombieController.cs" Line="95" Column="24" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerScripts\WeaponsManager.cs">
-    <Files>
-      <File FileName="Assets\Scripts\PlayerScripts\WeaponsManager.cs" Line="90" Column="34" />
->>>>>>> d6918a158290b6399f2a0283f14a7e9903e214d3
+      <File FileName="Assets\Zombies\Script\ZombieController.cs" Line="99" Column="35" />
+      <File FileName="Assets\FieldOfView.cs" Line="12" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
