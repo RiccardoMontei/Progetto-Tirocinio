@@ -1,0 +1,316 @@
+fileFormatVersion: 2
+guid: f9ac8b0f2c5cc9340804b938e4e99bd7
+timeCreated: 1521107353
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Ak-47
+    100002: Ak47Body
+    100004: Ak47Mag
+    100006: Armature
+    100008: Arms_Obj_004
+    100010: BaseballBat
+    100012: Cube_001
+    100014: finger_index_01_L
+    100016: finger_index_01_R
+    100018: finger_index_02_L
+    100020: finger_index_02_R
+    100022: finger_index_03_L
+    100024: finger_index_03_R
+    100026: finger_middle_01_L
+    100028: finger_middle_01_R
+    100030: finger_middle_02_L
+    100032: finger_middle_02_R
+    100034: finger_middle_03_L
+    100036: finger_middle_03_R
+    100038: finger_pinky_01_L
+    100040: finger_pinky_01_R
+    100042: finger_pinky_02_L
+    100044: finger_pinky_02_R
+    100046: finger_pinky_03_L
+    100048: finger_pinky_03_R
+    100050: finger_ring_01_L
+    100052: finger_ring_01_R
+    100054: finger_ring_02_L
+    100056: finger_ring_02_R
+    100058: finger_ring_03_L
+    100060: finger_ring_03_R
+    100062: foream_L
+    100064: foream_R
+    100066: hand_L
+    100068: hand_R
+    100070: M4A1_Sopmod
+    100072: M4A1_Sopmod_Body
+    100074: M4A1_Sopmod_Iron_Sight
+    100076: M4A1_Sopmod_Magazine
+    100078: //RootNode
+    100080: machete
+    100082: shoulder_L
+    100084: shoulder_R
+    100086: thumb_01_L
+    100088: thumb_01_R
+    100090: thumb_02_L
+    100092: thumb_02_R
+    100094: UMP-45
+    100096: UMP-45_Body
+    100098: UMP-45_Mag
+    100100: upper_arm_L
+    100102: upper_arm_R
+    100104: Weapons
+    400000: Ak-47
+    400002: Ak47Body
+    400004: Ak47Mag
+    400006: Armature
+    400008: Arms_Obj_004
+    400010: BaseballBat
+    400012: Cube_001
+    400014: finger_index_01_L
+    400016: finger_index_01_R
+    400018: finger_index_02_L
+    400020: finger_index_02_R
+    400022: finger_index_03_L
+    400024: finger_index_03_R
+    400026: finger_middle_01_L
+    400028: finger_middle_01_R
+    400030: finger_middle_02_L
+    400032: finger_middle_02_R
+    400034: finger_middle_03_L
+    400036: finger_middle_03_R
+    400038: finger_pinky_01_L
+    400040: finger_pinky_01_R
+    400042: finger_pinky_02_L
+    400044: finger_pinky_02_R
+    400046: finger_pinky_03_L
+    400048: finger_pinky_03_R
+    400050: finger_ring_01_L
+    400052: finger_ring_01_R
+    400054: finger_ring_02_L
+    400056: finger_ring_02_R
+    400058: finger_ring_03_L
+    400060: finger_ring_03_R
+    400062: foream_L
+    400064: foream_R
+    400066: hand_L
+    400068: hand_R
+    400070: M4A1_Sopmod
+    400072: M4A1_Sopmod_Body
+    400074: M4A1_Sopmod_Iron_Sight
+    400076: M4A1_Sopmod_Magazine
+    400078: //RootNode
+    400080: machete
+    400082: shoulder_L
+    400084: shoulder_R
+    400086: thumb_01_L
+    400088: thumb_01_R
+    400090: thumb_02_L
+    400092: thumb_02_R
+    400094: UMP-45
+    400096: UMP-45_Body
+    400098: UMP-45_Mag
+    400100: upper_arm_L
+    400102: upper_arm_R
+    400104: Weapons
+    2300000: Ak47Body
+    2300002: Ak47Mag
+    2300004: BaseballBat
+    2300006: Cube_001
+    2300008: M4A1_Sopmod_Body
+    2300010: M4A1_Sopmod_Iron_Sight
+    2300012: M4A1_Sopmod_Magazine
+    2300014: machete
+    2300016: UMP-45_Body
+    2300018: UMP-45_Mag
+    3300000: Ak47Body
+    3300002: Ak47Mag
+    3300004: BaseballBat
+    3300006: Cube_001
+    3300008: M4A1_Sopmod_Body
+    3300010: M4A1_Sopmod_Iron_Sight
+    3300012: M4A1_Sopmod_Magazine
+    3300014: machete
+    3300016: UMP-45_Body
+    3300018: UMP-45_Mag
+    4300000: Arms_Obj_004
+    4300002: machete
+    4300004: BaseballBat
+    4300006: Ak47Body
+    4300008: Ak47Mag
+    4300010: Cube_001
+    4300012: M4A1_Sopmod_Body
+    4300014: M4A1_Sopmod_Iron_Sight
+    4300016: M4A1_Sopmod_Magazine
+    4300018: UMP-45_Body
+    4300020: UMP-45_Mag
+    7400000: Default Take
+    7400002: ArmatureAction
+    9500000: //RootNode
+    13700000: Arms_Obj_004
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ak47Body__Untitled
+    second: {fileID: 2100000, guid: 7e5470b00d93da64c89918a7d4fabcf4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ak47_Magazine_NRM
+    second: {fileID: 2100000, guid: 9dfb7ffafae61c94a836f70c5701270a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_004__COLOR
+    second: {fileID: 2100000, guid: 74be85d77c1c66d4d9f1ac23136401a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No_Name
+    second: {fileID: 2100000, guid: b5afe6b4608b9ef428f86ec54cb93fb9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: unnamed
+    second: {fileID: 2100000, guid: 434369cf7a9851d47a462dfe31eff6f7, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Default Take
+      takeName: Default Take
+      firstFrame: 0
+      lastFrame: 12
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0
+        functionName: OnStartShot
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: ArmatureAction
+      takeName: ArmatureAction
+      firstFrame: 0
+      lastFrame: 12
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
