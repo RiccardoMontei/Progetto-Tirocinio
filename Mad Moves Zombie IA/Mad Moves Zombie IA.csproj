@@ -294,6 +294,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\FieldOfView.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\AimCamera.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\ShotFunctions.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\WeaponsDettails.cs" />
@@ -344,6 +345,7 @@
     <Compile Include="Assets\Store Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\VignetteAndChromaticAberration.cs" />
     <Compile Include="Assets\Store Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\Vortex.cs" />
     <Compile Include="Assets\Store Assets\Rocks and Boulders 2\Shaders\RotateGameObject.cs" />
+    <Compile Include="Assets\Zombies\Script\ZombieController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
