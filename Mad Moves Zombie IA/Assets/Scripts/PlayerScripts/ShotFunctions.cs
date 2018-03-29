@@ -9,6 +9,11 @@ public class ShotFunctions : MonoBehaviour
     private GameObject muzzle;
     private GameObject cartridge;
     
+	public AudioSource reload ;
+	public AudioSource ak47Shot;
+	public AudioSource m4a1Shot;
+	public AudioSource ump45Shot;
+	public AudioSource knifeHit;
     
 
     // Use this for initialization
@@ -20,16 +25,32 @@ public class ShotFunctions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        muzzle = GameObject.FindGameObjectWithTag("MuzzleEffect");
-        cartridge = GameObject.FindGameObjectWithTag("CartridgeEffect");
+
+        
 
     }
     public void OnStartShot()
     {
+		muzzle = GameObject.FindGameObjectWithTag("MuzzleEffect");
+		cartridge = GameObject.FindGameObjectWithTag("CartridgeEffect");
+
         GameObject Fire = GameObject.FindGameObjectWithTag("Fire");//Cerco il fire dell'arma 
         RaycastHit hit; //Parametro che contiene info sull'oggetto colpito
         
         weaponsManager.YourWeapon().GetComponent<WeaponsDettails>().bulletsToShot--;//Diminuzione proiettili
+		switch (weaponsManager.YourWeapon().gameObject.name)
+		{
+		case "Ak-47":
+			ak47Shot.Play();
+			break;
+		case "M4A1_Sopmod":
+			m4a1Shot.Play();
+			break;
+		case "UMP-45":
+			ump45Shot.Play();
+			break;
+
+		}
         muzzle.GetComponent<ParticleSystem>().Play();
         cartridge.GetComponent<ParticleSystem>().Play();
 
@@ -43,9 +64,23 @@ public class ShotFunctions : MonoBehaviour
 
         }
     }
-
+	public void OnStartKnifeHit(){
+		knifeHit.Play ();
+	}
+	public void OnMiddleOfChangeWeapon(){
+		if (weaponsManager.changeWeapon) {
+			if (weaponsManager.weaponChanged) {
+				weaponsManager.yourWeapons [1].SetActive (true);
+			}
+			if (!weaponsManager.weaponChanged) {
+				weaponsManager.yourWeapons [0].SetActive (true);
+			}
+			weaponsManager.changeWeapon = false;
+		}
+	}
     public void OnStartRecharge()
     {
+		reload.Play ();
         if (weaponsManager.bulletsShotted <= weaponsManager.YourWeapon().GetComponent<WeaponsDettails>().bulletsStored)
         {
             weaponsManager.YourWeapon().GetComponent<WeaponsDettails>().bulletsStored -= weaponsManager.bulletsShotted;//Diminuzione proiettili totali

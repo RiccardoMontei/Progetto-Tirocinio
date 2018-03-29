@@ -16,6 +16,8 @@ public class WeaponsManager : MonoBehaviour {
 	
     //Variabili di supporto al codice
 	public int bulletsShotted;//Tiene Conto di quanti proiettili del caricatore ho sparato
+	public bool changeWeapon=false;
+	public bool weaponChanged= false; //Flag che tiene presente che arma viene cambiata
 
     void Start () {
 		animator = GameObject.FindGameObjectWithTag("Animator").GetComponent<Animator> ();//Prendo l'animator del player
@@ -54,13 +56,15 @@ public class WeaponsManager : MonoBehaviour {
 
 	private void ChangeWeapon(){
 		if (Input.GetButtonDown ("ChangeWeapon") && !animator.GetBool("IsReloading") && !animator.GetBool("IsShotting")) {// Se premo ALT e non sto ricaricando o sparando
+			changeWeapon=true;
 			if (activeWeapon) {// e ho un'arma primaria equipaggiata
 				yourWeapons [0].gameObject.SetActive (false);//Disattivo l'arma primaria
-				yourWeapons [1].gameObject.SetActive (true);//Attivo la secondaria
+				weaponChanged=true;
 			} else if (!activeWeapon) {//Se ho un'arma corpo a corpo
 				yourWeapons [1].gameObject.SetActive (false);
-				yourWeapons [0].gameObject.SetActive (true);//Attivo la primaria
+				weaponChanged = false;
 			}
+			SetAllAnimatorBoolFalse ();
 		}
 	}
 
@@ -85,7 +89,7 @@ public class WeaponsManager : MonoBehaviour {
 		animator.SetBool ("M4A1", false);
 		animator.SetBool ("UMP5", false);
 		animator.SetBool ("Machete", false);
-		animator.SetBool ("BaseBallBat", false);
+		animator.SetBool ("BaseballBat", false);
 	}
 
 	private void WeaponsSelector(){
@@ -107,7 +111,7 @@ public class WeaponsManager : MonoBehaviour {
 				SetAllAnimatorBoolFalse ();
 				animator.SetBool ("Machete", true);
 					break;
-			case "BaseBallBat":
+			case "BaseballBat":
 				SetAllAnimatorBoolFalse ();
 				animator.SetBool ("BaseballBat", true);
 					break;
