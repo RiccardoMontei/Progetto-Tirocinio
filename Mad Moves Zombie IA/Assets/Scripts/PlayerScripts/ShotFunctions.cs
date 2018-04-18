@@ -9,6 +9,8 @@ public class ShotFunctions : MonoBehaviour
     private GameObject muzzle;
     private GameObject cartridge;
     
+	public GameObject bulletTrail; //effetto scia del proiettile
+
 	public AudioSource reload ;
 	public AudioSource ak47Shot;
 	public AudioSource m4a1Shot;
@@ -52,6 +54,7 @@ public class ShotFunctions : MonoBehaviour
 
 		}
         muzzle.GetComponent<ParticleSystem>().Play();
+		bulletTrail.GetComponent<ParticleSystem> ().Play();
         cartridge.GetComponent<ParticleSystem>().Play();
 
         Debug.DrawRay(Fire.transform.position, Fire.transform.forward * 300, Color.black);
@@ -59,7 +62,7 @@ public class ShotFunctions : MonoBehaviour
         {//Se il raggio colpisce qualcosa!
             if (hit.transform.gameObject.CompareTag("Zombie"))//Ed è uno zombie 
             {
-             //Logica sugli zombie
+				hit.transform.GetComponent<ZombieController> ().Hit (GetComponentInChildren<WeaponsDettails> ().damageForBullets);
             }
 
         }
