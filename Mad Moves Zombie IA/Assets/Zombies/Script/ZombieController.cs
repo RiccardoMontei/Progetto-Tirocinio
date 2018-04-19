@@ -21,7 +21,8 @@ public class ZombieController : MonoBehaviour {
 	public Vector3 nextDest = Vector3.zero;
 	public float playerTooFar;
 	public int lifePoints;
-	public int damage;
+	private int damageForHit=100;
+
 
 
 	void Start(){
@@ -122,7 +123,7 @@ public class ZombieController : MonoBehaviour {
 
 	private void TryToAttack(){
 		if (Vector3.Distance (transform.position, target.position) <= 1.8f) {
-			//Chiama la funzione del player passando il danno da applicare
+			GameObject.FindGameObjectWithTag ("Player").GetComponent<VitalityController> ().DecreaseLife (damageForHit);
 		}
 	}
 

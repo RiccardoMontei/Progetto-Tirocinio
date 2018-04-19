@@ -9,7 +9,7 @@ public class WeaponsManager : MonoBehaviour {
 	//Game Objects e correlati
 	public GameObject[] weapons =new GameObject[5];//Vettore delle armi
 	public GameObject[] yourWeapons = new GameObject[2];//Vettore delle 2 categorie di armi
-	private bool activeWeapon= false; //true arma primaria false arma secondaria
+	public bool activeWeapon= false; //true arma primaria false arma secondaria
 
 	//Variabili dell'animator
 	public Animator animator;
