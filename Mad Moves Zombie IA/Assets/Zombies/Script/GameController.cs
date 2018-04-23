@@ -8,16 +8,12 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Invoke ("StartHunt", 5.0f);
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
-
-	private void StartHunt(){
-		if (!zombie.GetComponent<ZombieController> ().isTriggered) {
+		if (!zombie.GetComponent<ZombieController> ().isTriggered && zombie.GetComponent<ZombieController>().lifePoints > 0) {
 			zombie.GetComponent<ZombieController> ().TargetingSystem (player);
 		}
 	}

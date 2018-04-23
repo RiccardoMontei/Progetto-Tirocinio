@@ -21,7 +21,7 @@ public class ZombieController : MonoBehaviour {
 	public Vector3 nextDest = Vector3.zero;
 	public float playerTooFar;
 	public int lifePoints;
-	private int damageForHit=100;
+	private int damageForHit=10;
 
 
 
@@ -76,7 +76,7 @@ public class ZombieController : MonoBehaviour {
 	private void OnHunt(){
 		velocity = agent.velocity.magnitude;
 		anim.SetFloat ("Velocity", velocity);
-		if (Vector3.Distance (transform.position, target.position) <= 1.8f) {
+		if (Vector3.Distance (transform.position, target.position) <= 1.8f && isTriggered) {
 			agent.enabled = false;
 			Vector3 lookingTarget = new Vector3 (target.position.x, transform.position.y, target.position.z);
 			transform.LookAt (lookingTarget);
@@ -93,13 +93,18 @@ public class ZombieController : MonoBehaviour {
 			agent.SetDestination (newDestination ());
 		}
 		if (Vector3.Distance (transform.position, target.position) <= 10.2f && !playerFound) {
+			agent.enabled = false;
 			anim.CrossFade ("Scream", 0.0f);
 			playerFound = true;
+		}
+		if (target.GetComponent<VitalityController> ().isDead) {
+			isTriggered = false;
+			target = null;
 		}
 	}
 
 	public void TargetingSystem(Transform tag){
-				target = tag;
+				this.target = tag;
 				isTriggered = true;
 				agent.destination = target.position;
 				agent.speed = speedHunt;
@@ -111,6 +116,7 @@ public class ZombieController : MonoBehaviour {
 
 	private void CheckHealth(){
 		if (lifePoints <= 0) {
+			isTriggered = false;
 			agent.enabled = false;
 			anim.CrossFade ("Death", 0.0f);
 			Invoke ("Suicide", 5.0f);
