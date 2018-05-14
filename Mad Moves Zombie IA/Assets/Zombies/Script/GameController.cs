@@ -13,8 +13,10 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!zombie.GetComponent<ZombieController> ().isTriggered && zombie.GetComponent<ZombieController>().lifePoints > 0) {
-			zombie.GetComponent<ZombieController> ().TargetingSystem (player);
+		if (zombie != null) {
+			if (!zombie.GetComponent<ZombieController> ().isTriggered && zombie.GetComponent<ZombieController> ().lifePoints > 0) {
+				zombie.GetComponent<ZombieController> ().TargetingSystem (player);
+			}
 		}
 	}
 
