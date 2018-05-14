@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mad Moves Zombie IA", "Asse
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mad Moves Zombie IA", "Assembly-CSharp-firstpass.csproj", "{C7B0CE23-868E-ED5B-139E-B70B624434C4}"
 EndProject
+Project("{9F57D286-8D64-5427-F40E-A4BF7A67483A}") = "Mad Moves Zombie IA", "Assembly-UnityScript.unityproj", "{046686A5-CFE1-2E05-7B4E-D6D11231D13F}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mad Moves Zombie IA", "Assembly-CSharp-Editor-firstpass.csproj", "{D0FA4FF5-94C7-1F31-EA4B-54CB4EB33D70}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mad Moves Zombie IA", "Assembly-CSharp-Editor.csproj", "{C9935428-A225-6D98-8983-B2C5E9D1CDB8}"
@@ -23,6 +25,10 @@ Global
 		{C7B0CE23-868E-ED5B-139E-B70B624434C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7B0CE23-868E-ED5B-139E-B70B624434C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7B0CE23-868E-ED5B-139E-B70B624434C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{046686A5-CFE1-2E05-7B4E-D6D11231D13F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{046686A5-CFE1-2E05-7B4E-D6D11231D13F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{046686A5-CFE1-2E05-7B4E-D6D11231D13F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{046686A5-CFE1-2E05-7B4E-D6D11231D13F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D0FA4FF5-94C7-1F31-EA4B-54CB4EB33D70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D0FA4FF5-94C7-1F31-EA4B-54CB4EB33D70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0FA4FF5-94C7-1F31-EA4B-54CB4EB33D70}.Release|Any CPU.ActiveCfg = Release|Any CPU

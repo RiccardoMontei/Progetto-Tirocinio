@@ -100,3 +100,4 @@ C:\Users\ricca\OneDrive\Desktop\Progetto-Tirocinio\Mad Moves Zombie IA\Temp\bin\
 C:\Users\ricca\OneDrive\Desktop\Progetto-Tirocinio\Mad Moves Zombie IA\obj\Debug\Assembly-CSharp-firstpass.csprojResolveAssemblyReference.cache
 C:\Users\ricca\OneDrive\Desktop\Progetto-Tirocinio\Mad Moves Zombie IA\obj\Debug\Assembly-CSharp-firstpass.dll
 C:\Users\ricca\OneDrive\Desktop\Progetto-Tirocinio\Mad Moves Zombie IA\obj\Debug\Assembly-CSharp-firstpass.pdb
+C:\Users\Administrator\Desktop\Progetto-Tirocinio\Mad Moves Zombie IA\Temp\bin\Debug\Newtonsoft.Json.dll

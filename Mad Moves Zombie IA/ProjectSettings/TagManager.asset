@@ -11,6 +11,9 @@ TagManager:
   - Zombie
   - MuzzleEffect
   - CartridgeEffect
+  - Fence
+  - CraftingSystem
+  - Ground
   layers:
   - Default
   - TransparentFX
