@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class ZombiesAcademy : Academy {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	public float agentRunSpeed;
+	public float agentRotationSpeed;
+	public float gravityMultiplier;
+
+	public override void InitializeAcademy()
+	{
+		Physics.gravity *= gravityMultiplier;
 	}
 }

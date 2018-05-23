@@ -14,6 +14,18 @@ TagManager:
   - Fence
   - CraftingSystem
   - Ground
+  - block
+  - agent
+  - ground
+  - goal
+  - wall
+  - player
+  - ball
+  - redGoal
+  - blueAgent
+  - blueGoal
+  - redAgent
+  - Pivot
   layers:
   - Default
   - TransparentFX

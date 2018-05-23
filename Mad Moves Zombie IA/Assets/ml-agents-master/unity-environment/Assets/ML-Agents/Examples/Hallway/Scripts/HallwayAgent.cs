@@ -36,6 +36,7 @@ public class HallwayAgent : Agent
         string[] detectableObjects = { "orangeGoal", "redGoal", "orangeBlock", "redBlock", "wall" };
         AddVectorObs((float)GetStepCount() / (float)agentParameters.maxStep);
         AddVectorObs(rayPer.Perceive(rayDistance, rayAngles, detectableObjects, 0f, 0f));
+	
     }
 
     IEnumerator GoalScoredSwapGroundMaterial(Material mat, float time)

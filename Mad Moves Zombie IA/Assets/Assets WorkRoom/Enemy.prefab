@@ -24,9 +24,10 @@ GameObject:
   - component: {fileID: 23079845140091252}
   - component: {fileID: 54261941335266164}
   - component: {fileID: 114059162382502740}
+  - component: {fileID: 114653531549373360}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,7 +41,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4847200280934158}
   - component: {fileID: 33074105950435318}
-  - component: {fileID: 136587847885341060}
   - component: {fileID: 23568650348328090}
   m_Layer: 0
   m_Name: Capsule
@@ -55,8 +55,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1485339046286916}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45, y: 0.5, z: -45}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -45, y: 0, z: 45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4847200280934158}
@@ -167,7 +167,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &65384059230352062
 BoxCollider:
@@ -179,8 +179,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1.48}
+  m_Center: {x: 0, y: 0, z: 0.21}
 --- !u!114 &114059162382502740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -195,20 +195,22 @@ MonoBehaviour:
   brain: {fileID: 0}
   agentParameters:
     agentCameras: []
-    maxStep: 0
+    maxStep: 5000
     resetOnDone: 1
     onDemandDecision: 0
-    numberOfActionsBetweenDecisions: 1
---- !u!136 &136587847885341060
-CapsuleCollider:
+    numberOfActionsBetweenDecisions: 5
+  area: {fileID: 0}
+  ground: {fileID: 0}
+  player: {fileID: 0}
+  bounds: {fileID: 0}
+--- !u!114 &114653531549373360
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1814241122065042}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_GameObject: {fileID: 1485339046286916}
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb172294dbbcc408286b156a2c4b553c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
