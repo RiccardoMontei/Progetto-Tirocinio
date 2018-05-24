@@ -52,7 +52,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Assets WorkRoom\Scripts\CameraController.cs" />
-     <Compile Include="Assets\Assets WorkRoom\Scripts\Destroy.cs" />
      <Compile Include="Assets\Assets WorkRoom\Scripts\DistanceDetector.cs" />
      <Compile Include="Assets\Assets WorkRoom\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Assets WorkRoom\Scripts\Restore.cs" />

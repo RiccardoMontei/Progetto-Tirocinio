@@ -34,10 +34,12 @@ public class ZombiesAgent : Agent {
 	public override void CollectObservations ()
 	{
 		float rayDistance = 30f;
-		float[] rayAngles = { 20f, 60f, 90f, 120f, 160f };
+		float[] rayAngles = { -20f, 0f, 20f, 40f, 60f, 80f,100f, 120f ,140f, 160f, 180f, 200f };
 		string[] detectableObjects;
 		detectableObjects = new string[] { "player", "wall", "block" };
-
+		Vector3 localVelocity = transform.InverseTransformDirection(zombieRB.velocity);
+		AddVectorObs(localVelocity.x);
+		AddVectorObs(localVelocity.z);
 		AddVectorObs(rayPer.Perceive(rayDistance, rayAngles, detectableObjects, 0f, 0f));
 		AddVectorObs((float)GetStepCount() / (float)agentParameters.maxStep);
 
@@ -81,7 +83,7 @@ public class ZombiesAgent : Agent {
 	/// </summary>
 	public override void AgentAction(float[] vectorAction, string textAction)
 	{
-		AddReward(-2f / agentParameters.maxStep);
+		AddReward(-1f / agentParameters.maxStep);
 		MoveAgent(vectorAction);
 	}
 
