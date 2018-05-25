@@ -31,8 +31,6 @@ public class PlayerController : MonoBehaviour {
 			float movementVertical = Input.GetAxis ("Vertical");
 			//Vettore del movimento
 			Vector3 movemnet = new Vector3 (movementHorizontal, 0.0f, movementVertical);
-			//prende la pressione di "space" tramite 
-       
 			rb.AddForce (movemnet * speed);   
 		}
            

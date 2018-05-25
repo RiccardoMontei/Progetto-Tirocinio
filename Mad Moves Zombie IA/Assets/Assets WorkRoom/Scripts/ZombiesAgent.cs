@@ -118,14 +118,12 @@ public class ZombiesAgent : Agent {
 	}
 
 	void FixedUpdate(){
-		Debug.Log (brain);
-		Debug.Log (academy.agentRunSpeed);
-
+	
 		GameObject hit = rayPer.objectObserved; //Oggetto osservato dall'agente
 
 		if(hit!= null)
-			Debug.Log(hit.tag);
-		if (!trainer.activeTraining) {//Se non sto addestrando attivo lo switch dei cervelli
+			
+		if (!trainer.activeTraining && hit !=null) {//Se non sto addestrando attivo lo switch dei cervelli
 			
 			if ((config == 0 || config == 2) ) { //Se sono in No zombie brain o in Zombie Brain Chest(priorità al player)
 				if (hit.CompareTag ("player")) { // e vedo il player
@@ -133,6 +131,7 @@ public class ZombiesAgent : Agent {
 					ConfigureAgent (config); 
 					timer = 0;
 					isBrainSwitched = true;
+					Debug.Log (brain);
 				}
 			}
 
@@ -142,6 +141,7 @@ public class ZombiesAgent : Agent {
 					ConfigureAgent (config);
 					timer = 0;
 					isBrainSwitched = true;
+					Debug.Log (brain);
 
 				}
 			}
@@ -150,6 +150,7 @@ public class ZombiesAgent : Agent {
 				isBrainSwitched = false;  
 				config = 0;
 				ConfigureAgent (config);
+				Debug.Log (brain);
 			}
 			
 

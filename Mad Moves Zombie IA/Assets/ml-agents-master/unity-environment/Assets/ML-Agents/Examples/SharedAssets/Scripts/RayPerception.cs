@@ -46,6 +46,9 @@ public class RayPerception : MonoBehaviour
 				
                 for (int i = 0; i < detectableObjects.Length; i++)
                 {
+					if (hit.collider.gameObject.CompareTag(detectableObjects[i]))
+						objectObserved = hit.collider.gameObject;
+					
                     if (hit.collider.gameObject.CompareTag(detectableObjects[i]))
                     {
 						objectObserved = hit.collider.gameObject;

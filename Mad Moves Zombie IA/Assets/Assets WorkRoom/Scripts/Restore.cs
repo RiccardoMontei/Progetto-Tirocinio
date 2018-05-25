@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class Restore : MonoBehaviour {
 	public Vector3 randomPosition; //Vettore di posizione randomica
 
 	public GameObject pivot; //Gameobject al centro del ring
+	private int score1;
 
+	public Text score;
 	public TrainingConfiguration trainer;
 
 	void Start (){
@@ -15,6 +18,7 @@ public class Restore : MonoBehaviour {
 	}
 
 	void Update () {
+		score.text= score1.ToString();
 		//Generazione random di un vettore di posizione
 		randomPosition= new Vector3(Random.Range(pivot.transform.position.x - 45,pivot.transform.position.x + 45), pivot.transform.position.y, Random.Range (pivot.transform.position.z - 45,pivot.transform.position.z + 45));
 		//Reset della posizione in caso di bug di uscita dalla mappa (solo CPU velocity)
@@ -27,6 +31,11 @@ public class Restore : MonoBehaviour {
 		//Raccolta del prototipo della cassa di rifornimenti
 		if(other.gameObject.CompareTag("chest") && !trainer.activeTraining){ //Se non sto addestrando posso raccogliere la chest 
 			other.gameObject.transform.position = randomPosition; //Viene  rigenerata in posizione random nella mappa 
+			score1++;
+		}
+		if(other.gameObject.CompareTag("block") && !trainer.activeTraining){ //Se non sto addestrando posso essere mangiato dai cubi
+			gameObject.transform.position = randomPosition; //Viene  rigenerata in posizione random nella mappa 
+			score1--;
 		}
 		if(other.gameObject.CompareTag("block") && trainer.activeTraining){//Se sto addestrando la pallina svanisce al contatto con il nemici
 			other.gameObject.transform.position = randomPosition; //Vengono rigenerati in posizione random nella mappa 
