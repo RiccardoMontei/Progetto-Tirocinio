@@ -26,6 +26,7 @@ TagManager:
   - blueGoal
   - redAgent
   - Pivot
+  - chest
   layers:
   - Default
   - TransparentFX

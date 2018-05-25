@@ -119,7 +119,6 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 7b848b7feaa524953d09fc1851efa6da UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 c24a21b131bfa67be1162db2cba4b52b UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ParticleCollision
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.PlayerController
 38f2aefc9dcf0f8107e7bd37238b3096 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.Blur
 f5ce04d51633a5a2e05a731aa45ef200 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.MotionBlur
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
@@ -145,7 +144,7 @@ ed7ccd26b1dc12db9621c9097656c993 Assembly-CSharp.dll:.GridAgent
 22df741b1a3c6d3b215ca28ad83c5a3f Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.ScreenSpaceAmbientObscurance
 1c859dfdbbcb0df99ff62d9e20d40887 Assembly-CSharp.dll:.GunShoot
 274f3540937ad0efaf01a452480a3ab0 Assembly-CSharp.dll:.CrawlerLegContact
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.RayPerception
+83840f627ad25f09b3612df74344c385 Assembly-CSharp.dll:.RayPerception
 07701aa818d962a77e81dc66b620136d Assembly-CSharp.dll:.DecalDestroyer
 6e714b24188cddfc9ae1e07d05ed4ddd Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.ParticleSystemDestroyer
 879b3df2ab67cfd00172f75f85a7a583 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.SimpleMouseRotator
@@ -155,12 +154,13 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingRenderer
-95ec42f8ee9c9c1719faec41429e0bc9 Assembly-CSharp.dll:.ZombiesAgent
+00e5b83eb2e34c0e62d9a26f229849da Assembly-CSharp.dll:.ZombiesAgent
 d6593c5b50c84ab0171d0b10c8dcb36e Assembly-CSharp.dll:.ZombiesAcademy
 b0a3f2ad3ab13d8c60f52ec16540d423 Assembly-CSharp.dll:.ReacherAcademy
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.DragRigidbody
 2b5bd81c259c691324a17af9a3e97e85 Assembly-CSharp.dll:.CameraController
 9f29bcecbd519f53c80013bbe9c16bc8 Assembly-CSharp.dll:.RotateGameObject
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.PlayerController
 78ebae5ed9b3edeb216da437b99754a4 Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.Joystick
 6e138d3bb616afb5924c2ba9a9204c9a Assembly-CSharp.dll:.WallJumpAgent
 eaa828e64d885f0e839385b49654a655 Assembly-CSharp.dll:.SoccerBallController
@@ -179,6 +179,7 @@ a7d3c6c6948d99dd4116e659ddcf5ac4 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 83877f03b51b3b13fa0d6c51291e0575 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Characters.FirstPerson.HeadBob
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl
 a90e94673f50d2237c1b971c138660c6 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMoveAndRotate
+4e46f32de511a989d52b0830fa5ed6cd Assembly-CSharp.dll:.DistanceDetector
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:.ForcedReset
 57fde8e76fc7bce23deb0e799d336be7 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.SmoothFollow
 cfa93710d56cd4da2a3b2eec27bc1139 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Water.PlanarReflection
@@ -244,7 +245,6 @@ e2b50e4e1e5006d87e7ebe8a724e8f6d Assembly-CSharp.dll:UnityStandardAssets.ImageEf
 ad5eb72c4026402435a88dc278fb3373 Assembly-CSharp.dll:.AimCamera
 63719530d5b7d49ae337bb54479415b5 Assembly-CSharp.dll:.CoreBrainExternal
 d2af69ce28cda6fcf0b7728ae3f251b4 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.DynamicShadowSettings
-4e46f32de511a989d52b0830fa5ed6cd Assembly-CSharp.dll:.DistanceDetector
 00566559aaf2ba51543e32371603951b Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.NoiseAndGrain
 602017ac837ce39de79e6b98478ee720 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.SimpleActivatorMenu
 59a12f4291beb8bd89edb201bdcec6c2 Assembly-CSharp.dll:.BCTeacherHelper
@@ -291,9 +291,10 @@ e2a8fd4524fc2a3a236b7e7720b544a6 Assembly-CSharp.dll:UnityStandardAssets.ImageEf
 08ab6fa9d6ef13026fbc7a9e9350ef2d Assembly-CSharp.dll:.BananaLogic
 8aad973f4abbab3e700349edef91c546 Assembly-CSharp.dll:.WallJumpAcademy
 b3432dfe180f02232d7612fb366593d3 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.ColorCorrectionLookup
-5ff9d5c2c99e047bdc09ed35bde5638b Assembly-CSharp.dll:.Restore
+a3f0f3f25feb743bd9bfb9ba5382bb1f Assembly-CSharp.dll:.Restore
 9329bfa8727c9ea9012b1e26b08be196 Assembly-CSharp.dll:.BananaArea
 3ae0dad0b55a80319e1d57c2dce28da7 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.Tonemapping
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.RestoreChest
 022cf2da8ce15cf719e26cc060ef225d Assembly-CSharp.dll:.TemplateAgent
 22c49f4992e24b14c537d18c1c061c53 Assembly-CSharp.dll:.Ball3DAgent
 551fad68c163da4d709330167b1f58b1 Assembly-CSharp.dll:.AgentSoccer

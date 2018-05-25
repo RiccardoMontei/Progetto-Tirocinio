@@ -23,8 +23,8 @@ GameObject:
   - component: {fileID: 135197409609723498}
   - component: {fileID: 23956986369994496}
   - component: {fileID: 54645474050529000}
-  - component: {fileID: 114213692632069350}
   - component: {fileID: 114268132571689892}
+  - component: {fileID: 114238069628090466}
   m_Layer: 0
   m_Name: Player
   m_TagString: player
@@ -95,11 +95,11 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114213692632069350
+--- !u!114 &114238069628090466
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -107,9 +107,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1560206206827818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dcbf5733f821984abc89e969569e059, type: 3}
+  m_Script: {fileID: 11500000, guid: b842645555f5db34a89aa46974d09e5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trainer: {fileID: 0}
 --- !u!114 &114268132571689892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,8 +122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c1a673fda899874289486a780c5e237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultPosition: {x: 0, y: 0, z: 0}
+  randomPosition: {x: 0, y: 0, z: 0}
   pivot: {fileID: 0}
+  trainer: {fileID: 0}
 --- !u!135 &135197409609723498
 SphereCollider:
   m_ObjectHideFlags: 1
