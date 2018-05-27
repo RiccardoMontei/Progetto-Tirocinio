@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DynamicZombieAgent : Agent {
 
-	Animator my_anim;
+	Animator animator;
 
 	private int config = 0;//Determina che cervello si sta usando (default No Zombie Brain)
 	private bool isBrainSwitched = false; //Booleano di controllo sul cambiamento di cervello (protezione del cambio)
@@ -19,40 +19,45 @@ public class DynamicZombieAgent : Agent {
 	public GameObject area; //Game area
 	public GameObject player; //The player
 	public GameObject bounds;//Muri della mappa
-	private GameObject chest;//Chest di rifornimento
+	public GameObject chest;//Chest di rifornimento
 
-	private float distance;
-	private float minDistance=100.0f;
+
 
 	RayPerception rayPer;
-	ZombiesAcademy academy;
+	DynamicZombieAccademy academy;
 
 
-	Rigidbody zombieRB;  //cached on initialization
-	Rigidbody playerRB;  //cached on initialization
+	private Rigidbody zombieRB;  //cached on initialization
+	private Rigidbody playerRB;  //cached on initialization
 
 	public TrainingConfiguration trainer; //Contiene le info su cosa si stia facendo, attaccato all'academy
 
+	/* Per addestrare un cervello basta andare su "Acaemy" nell'inspector e selezionare il flag di addestramento true più il flag di quale cervello si voglia addestrare, 
+	 * tutte le porzioni di codice adibite ad addestramento hanno il controllo su quei flag, e anche la selezione del cervello lo ha.*/
+
 	void Start (){
+		academy = FindObjectOfType<DynamicZombieAccademy> ();
 		trainer= FindObjectOfType<TrainingConfiguration>();
-	}
 
-	void Awake()
-	{
-		brain = NoZombieBrain; //Assegno di default il no zombie brain
+		if (trainer.zombieBrainTrainer)
+			brain = ZombieBrain;
 
-		academy = FindObjectOfType<ZombiesAcademy> ();
+		if (trainer.noZombieBrainTrainer)
+			brain = NoZombieBrain;
+
+		if (trainer.zombieBrainChestTrainer)
+				brain = ZombieBrainChest;
+		
 	}
+		
 
 	public override void InitializeAgent()
 	{
 		base.InitializeAgent ();
-
-		chest = GameObject.FindGameObjectWithTag ("chest");
-		zombieRB = GetComponentInChildren<Rigidbody> ();
+		zombieRB = GetComponent <Rigidbody> ();
 		playerRB = player.GetComponent<Rigidbody> ();
 		rayPer = GetComponent<RayPerception> ();
-		my_anim = GetComponentInChildren<Animator> ();
+		animator = GetComponent<Animator> ();
 	}
 
 	public override void CollectObservations ()
@@ -66,7 +71,6 @@ public class DynamicZombieAgent : Agent {
 
 		AddVectorObs(localVelocity.x);
 		AddVectorObs(localVelocity.z);
-
 		AddVectorObs(rayPer.Perceive(rayDistance, rayAngles, detectableObjects, 0f, 0f));
 		AddVectorObs((float)GetStepCount() / (float)agentParameters.maxStep);
 	}
@@ -96,17 +100,12 @@ public class DynamicZombieAgent : Agent {
 				rotateDir = transform.up * -1f;
 				break;
 			}
-			if (!trainer.activeTraining) {//Se non sto addestrando
-				if (config == 1)//Se sto inseguendo il player la velocità è maggiore
-					academy.agentRunSpeed = 1.5f;
-				else
-					academy.agentRunSpeed = 1f;
-			}
 
 			transform.Rotate (rotateDir, Time.fixedDeltaTime * 150f);
-			//zombieRB.AddForce (dirToGo * academy.agentRunSpeed,
-			//	ForceMode.VelocityChange);
-			my_anim.SetFloat("Velocity", dirToGo.z * academy.agentRunSpeed);
+			zombieRB.AddForce (dirToGo * academy.agentRunSpeed,
+				ForceMode.VelocityChange);
+
+			animator.SetFloat("Velocity", zombieRB.velocity.magnitude);//Setto il float dell'animator velocity
 		}
 	}
 
