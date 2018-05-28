@@ -67,12 +67,17 @@ public class DynamicZombieAgent : Agent {
 		string[] detectableObjects;
 
 		detectableObjects = new string[] { "player", "wall", "block","chest" };
-		Vector3 localVelocity = transform.InverseTransformDirection(zombieRB.velocity);
+		//Vector3 localVelocity = transform.InverseTransformDirection(zombieRB.velocity);
 
-		AddVectorObs(localVelocity.x);
-		AddVectorObs(localVelocity.z);
+		//AddVectorObs(localVelocity.x);
+		//AddVectorObs(localVelocity.z);
 		AddVectorObs(rayPer.Perceive(rayDistance, rayAngles, detectableObjects, 0f, 0f));
 		AddVectorObs((float)GetStepCount() / (float)agentParameters.maxStep);
+		//AddVectorObs (transform.position.x);
+		//AddVectorObs (transform.position.z);
+		//AddVectorObs (Mathf.Abs (transform.position.x - area.transform.position.x));
+		//AddVectorObs (Mathf.Abs (transform.position.z - area.transform.position.z));
+		//AddVectorObs (transform.forward);
 	}
 
 
@@ -84,7 +89,32 @@ public class DynamicZombieAgent : Agent {
 
 		int action = Mathf.FloorToInt(act[0]);
 
-		if (brain.brainParameters.vectorActionSpaceType == SpaceType.continuous) {
+		switch (action) {
+		case 0:
+			animator.SetBool ("Stay", true);
+			animator.SetBool ("Walk", false);
+			animator.SetBool ("Run", false);
+			break;
+		case 1:
+			animator.SetBool ("Stay", false);
+			animator.SetBool ("Walk", true);
+			animator.SetBool ("Run", false);
+			break;
+		case 2:
+			animator.SetBool ("Stay", false);
+			animator.SetBool ("Walk", false);
+			animator.SetBool ("Run", true);
+			break;
+		case 3:
+			rotateDir = transform.up * 1f;
+			break;
+		case 4:
+			rotateDir = transform.up * -1f;
+			break;
+		}
+		transform.Rotate (rotateDir, Time.fixedDeltaTime * 150f);
+
+		/*if (brain.brainParameters.vectorActionSpaceType == SpaceType.continuous) {
 			dirToGo = transform.forward * Mathf.Clamp (act [0], -1f, 1f);
 			rotateDir = transform.up * Mathf.Clamp (act [1], -1f, 1f);
 		} else {
@@ -106,12 +136,12 @@ public class DynamicZombieAgent : Agent {
 				ForceMode.VelocityChange);
 
 			animator.SetFloat("Velocity", zombieRB.velocity.magnitude);//Setto il float dell'animator velocity
-		}
+		}*/
 	}
 
 	public override void AgentAction(float[] vectorAction, string textAction)
 	{
-		AddReward(-1f / agentParameters.maxStep);//Assegno un malus per incentivare la velocità di esecuzione
+		AddReward(-2f / agentParameters.maxStep);//Assegno un malus per incentivare la velocità di esecuzione
 		MoveAgent(vectorAction);
 	}
 
