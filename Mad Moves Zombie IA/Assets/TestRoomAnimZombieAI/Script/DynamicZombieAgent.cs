@@ -71,7 +71,7 @@ public class DynamicZombieAgent : Agent {
 
 		//AddVectorObs(localVelocity.x);
 		//AddVectorObs(localVelocity.z);
-		AddVectorObs(rayPer.Perceive(rayDistance, rayAngles, detectableObjects, 0f, 0f));
+		AddVectorObs(rayPer.Perceive(rayDistance, rayAngles, detectableObjects, 1.5f, 0f));
 		AddVectorObs((float)GetStepCount() / (float)agentParameters.maxStep);
 		//AddVectorObs (transform.position.x);
 		//AddVectorObs (transform.position.z);

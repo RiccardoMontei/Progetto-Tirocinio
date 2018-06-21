@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-C:/Users/Andrea/Downloads/ml-agents-master/python/ZombieChest/ZombieChest.exe
+C:/Users/Andrea/Downloads/ml-agents-master/python/NoZombieBrain/NoZombieBrain.exe
 SceneListBegin?
 Assets/TestRoomAnimZombieAI/Scenes/TestRoom.unity
 SceneListEnd?

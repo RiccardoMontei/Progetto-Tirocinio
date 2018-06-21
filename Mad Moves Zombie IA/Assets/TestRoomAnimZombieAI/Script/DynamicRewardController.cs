@@ -13,12 +13,14 @@ public class DynamicRewardController : MonoBehaviour {
 	private GameObject chest;
 
 	private float timer;
+	private float counter;
 
 	public TrainingConfiguration trainer;
 
 	void Start (){
 		agent = GetComponent<DynamicZombieAgent> ();
 		trainer= FindObjectOfType<TrainingConfiguration>();
+		counter = 0f;
 	}
 
 	void Update () {
@@ -45,7 +47,7 @@ public class DynamicRewardController : MonoBehaviour {
 
 			}
 			if (other.gameObject.CompareTag ("block") ) {//Se il cubo tocca un'altro cubo
-				agent.SetReward (-1f); //Assegno un malus alto 
+				agent.SetReward (-2f); //Assegno un malus alto 
 				agent.Done ();
 
 				gameObject.transform.position = randomPosition;
@@ -70,7 +72,7 @@ public class DynamicRewardController : MonoBehaviour {
 
 			if (other.gameObject.CompareTag ("block")) { // se il cubo entra nel trigger di un'altro cubo
 				timer = 0; //azzero il mio timer
-				agent.SetReward (2f); //Assegno un reward basso per incentivare la ricerca
+				agent.SetReward (1.5f); //Assegno un reward basso per incentivare la ricerca
 				agent.Done (); 
 			}
 		}	
@@ -78,7 +80,7 @@ public class DynamicRewardController : MonoBehaviour {
 
 			if (other.gameObject.CompareTag ("chest")) {// se il cubo entra nel triggr della chest
 				timer = 0;
-				agent.SetReward (0.1f);
+				agent.SetReward (1f);
 
 			}
 		}
@@ -89,12 +91,13 @@ public class DynamicRewardController : MonoBehaviour {
 
 			if (other.gameObject.CompareTag ("block")) { 
 
-				if (timer > 5f) { //Se rimango nel trigger per 5 secondi
+				if (timer > (counter + 5f)) { //Se rimango nel trigger per 5 secondi
 
-					agent.SetReward (-1f); //Assegno una ricompensa sostanziosa per incentivare la vicinanza con i cubi
+					agent.SetReward (1.5f); //Assegno una ricompensa sostanziosa per incentivare la vicinanza con i cubi
 					agent.Done ();
 					gameObject.transform.position = randomPosition;
 					timer = 0;
+					counter++;
 				}
 			}
 		}
@@ -102,13 +105,14 @@ public class DynamicRewardController : MonoBehaviour {
 
 			if (other.gameObject.CompareTag ("chest")) {
 
-				if (timer > 5f) { //Se rimango nel trigger della chest per 5 secondi
+				if (timer > (counter + 5f)) { //Se rimango nel trigger della chest per 5 secondi
 
 					agent.SetReward (2f); //Assegno una ricompensa sostanzisa per incentivare la vicinanza
 					agent.Done ();
 					other.transform.position = chestRandomPosition;	
 					gameObject.transform.position = randomPosition;
 					timer = 0;
+					counter++;
 				}
 			}
 		}
