@@ -9,6 +9,7 @@ public class DynamicRewardController : MonoBehaviour {
 	private Vector3 randomPosition;
 	private Vector3 chestRandomPosition;
 
+	public GameObject player;
 	public GameObject pivot;
 	private GameObject chest;
 
@@ -27,7 +28,7 @@ public class DynamicRewardController : MonoBehaviour {
 		timer += Time.deltaTime;
 
 		chest = GameObject.FindGameObjectWithTag ("chest");
-		chestRandomPosition= new Vector3(Random.Range(pivot.transform.position.x - 45,pivot.transform.position.x + 45), pivot.transform.position.y, Random.Range (pivot.transform.position.z - 45,pivot.transform.position.z + 45));
+		chestRandomPosition= new Vector3(Random.Range(pivot.transform.position.x - 45,pivot.transform.position.x + 45), pivot.transform.position.y+1.5f, Random.Range (pivot.transform.position.z - 45,pivot.transform.position.z + 45));
 		randomPosition= new Vector3(Random.Range(pivot.transform.position.x - 45,pivot.transform.position.x + 45), pivot.transform.position.y, Random.Range (pivot.transform.position.z - 45,pivot.transform.position.z + 45));
 
 		if (Vector3.Distance (gameObject.transform.position, pivot.transform.position) > 100)
@@ -40,14 +41,10 @@ public class DynamicRewardController : MonoBehaviour {
 		if (trainer.zombieBrainTrainer || trainer.noZombieBrainTrainer) { //Se sto addestrando Zombie Brain) 
 
 			if (other.gameObject.CompareTag ("player") ){// e il cubo tocca il player
-				agent.SetReward (2f);//Assegno una ricompensa di 2f( alta)
-				agent.Done (); //L'agente ha fatto il suo dovere
-
-				gameObject.transform.position = randomPosition; //Rispawna il cubetto random per ricominciare la ricerca
-
+				agent.SetReward (-0.1f);//Assegno una ricompensa di 2f( alta)
 			}
 			if (other.gameObject.CompareTag ("block") ) {//Se il cubo tocca un'altro cubo
-				agent.SetReward (-2f); //Assegno un malus alto 
+				agent.SetReward (-1f); //Assegno un malus alto 
 				agent.Done ();
 
 				gameObject.transform.position = randomPosition;
@@ -116,5 +113,20 @@ public class DynamicRewardController : MonoBehaviour {
 				}
 			}
 		}
+	}
+	private void TryToAttack(){
+		Debug.Log ("OnTry");
+		Debug.Log (Vector3.Distance (transform.position, player.transform.position));
+		if (Vector3.Distance (transform.position, player.transform.position) <= 4f) {
+			agent.SetReward (4f);//Assegno una ricompensa di 2f( alta)
+			agent.Done (); //L'agente ha fatto il suo dovere
+			Debug.Log("Hitted");
+			player.transform.position = chestRandomPosition;
+			gameObject.transform.position = randomPosition; //Rispawna il cubetto random per ricominciare la ricerca
+		} else {
+			Debug.Log ("Fail");
+			agent.SetReward (-2f);
+			agent.Done ();
+			}
 	}
 }
