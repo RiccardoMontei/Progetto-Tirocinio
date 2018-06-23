@@ -1,4 +1,7 @@
 sceneSetups:
-- path: Assets/TestRoomAnimZombieAI/Scenes/TestRoom.unity
+- path: Assets/Scenes/GameScene.unity
   isLoaded: 1
   isActive: 1
+- path: Assets/TestRoomAnimZombieAI/Scenes/TestRoom.unity
+  isLoaded: 0
+  isActive: 0
