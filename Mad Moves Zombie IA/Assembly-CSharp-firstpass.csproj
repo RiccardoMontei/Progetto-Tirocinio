@@ -106,7 +106,7 @@
      <Compile Include="Assets\Standard Assets\Utility\WaypointProgressTracker.cs" />
      <None Include="Assets\Store Assets\NatureStarterKit2\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Store Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
-     <None Include="Assets\ml-agents-master\python\requirements.txt" />
+     <None Include="Assets\Machine Learning Agent\python\requirements.txt" />
      <None Include="Assets\Store Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
      <None Include="Assets\Store Assets\NatureStarterKit2\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
      <None Include="Assets\Store Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
@@ -117,7 +117,7 @@
      <None Include="Assets\Store Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurves.shader" />
      <None Include="Assets\Store Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceAmbientObscurance.shader" />
      <None Include="Assets\Store Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\NFAA.shader" />
-     <None Include="Assets\ml-agents-master\unity-environment\ProjectSettings\ProjectVersion.txt" />
+     <None Include="Assets\Machine Learning Agent\unity-environment\ProjectSettings\ProjectVersion.txt" />
      <None Include="Assets\Store Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\TiltShiftHdrLensBlur.shader" />
      <None Include="Assets\Store Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\VignetteShader.shader" />
      <None Include="Assets\Store Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
@@ -220,20 +220,20 @@
  <Reference Include="UnityEngine.HoloLens">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
- <Reference Include="System.Numerics">
- <HintPath>C:/Users/Administrator/Desktop/Progetto-Tirocinio/Mad Moves Zombie IA/Assets/ml-agents-master/unity-environment/Assets/ML-Agents/Plugins/System.Numerics.dll</HintPath>
- </Reference>
  <Reference Include="System.ValueTuple">
- <HintPath>C:/Users/Administrator/Desktop/Progetto-Tirocinio/Mad Moves Zombie IA/Assets/ml-agents-master/unity-environment/Assets/ML-Agents/Plugins/System.ValueTuple.dll</HintPath>
- </Reference>
- <Reference Include="TensorFlowSharp.Android">
- <HintPath>C:/Users/Administrator/Desktop/Progetto-Tirocinio/Mad Moves Zombie IA/Assets/ml-agents-master/unity-environment/Assets/ML-Agents/Plugins/Android/TensorFlowSharp.Android.dll</HintPath>
- </Reference>
- <Reference Include="TensorFlowSharp">
- <HintPath>C:/Users/Administrator/Desktop/Progetto-Tirocinio/Mad Moves Zombie IA/Assets/ml-agents-master/unity-environment/Assets/ML-Agents/Plugins/Computer/TensorFlowSharp.dll</HintPath>
+ <HintPath>C:/Users/Administrator/Desktop/Progetto-Tirocinio/Mad Moves Zombie IA/Assets/Machine Learning Agent/unity-environment/Assets/ML-Agents/Plugins/System.ValueTuple.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>C:/Users/Administrator/Desktop/Progetto-Tirocinio/Mad Moves Zombie IA/Assets/ml-agents-master/unity-environment/Assets/ML-Agents/Plugins/JSON/Newtonsoft.Json.dll</HintPath>
+ <HintPath>C:/Users/Administrator/Desktop/Progetto-Tirocinio/Mad Moves Zombie IA/Assets/Machine Learning Agent/unity-environment/Assets/ML-Agents/Plugins/JSON/Newtonsoft.Json.dll</HintPath>
+ </Reference>
+ <Reference Include="TensorFlowSharp.Android">
+ <HintPath>C:/Users/Administrator/Desktop/Progetto-Tirocinio/Mad Moves Zombie IA/Assets/Machine Learning Agent/unity-environment/Assets/ML-Agents/Plugins/Android/TensorFlowSharp.Android.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Numerics">
+ <HintPath>C:/Users/Administrator/Desktop/Progetto-Tirocinio/Mad Moves Zombie IA/Assets/Machine Learning Agent/unity-environment/Assets/ML-Agents/Plugins/System.Numerics.dll</HintPath>
+ </Reference>
+ <Reference Include="TensorFlowSharp">
+ <HintPath>C:/Users/Administrator/Desktop/Progetto-Tirocinio/Mad Moves Zombie IA/Assets/Machine Learning Agent/unity-environment/Assets/ML-Agents/Plugins/Computer/TensorFlowSharp.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
