@@ -155,8 +155,6 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingRenderer
-b9a15786ed7f9602113c56cc6f63a1d2 Assembly-CSharp.dll:.ZombiesAgent
-d6593c5b50c84ab0171d0b10c8dcb36e Assembly-CSharp.dll:.ZombiesAcademy
 b0a3f2ad3ab13d8c60f52ec16540d423 Assembly-CSharp.dll:.ReacherAcademy
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.DragRigidbody
 9f29bcecbd519f53c80013bbe9c16bc8 Assembly-CSharp.dll:.RotateGameObject
@@ -170,7 +168,7 @@ d6593c5b50c84ab0171d0b10c8dcb36e Assembly-CSharp.dll:.DynamicZombieAccademy
 37bf4d6a6d424731cb4a9b998783e5c6 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Characters.ThirdPerson.ThirdPersonCharacter
 4df86f437a61b08c14fd0adff88ddf71 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.ActivateTrigger
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.RandomDecision
-324dd0949a246f65bd3d0c148f6176e7 Assembly-CSharp.dll:.DynamicRewardController
+7fd7106db6ff0956b6b4dd465762fc73 Assembly-CSharp.dll:.DynamicRewardController
 bde5f2ef2cc0af62c8e6c38839b1cd6b Assembly-CSharp.dll:.BananaAgent
 b7536247a550bc1596505b7f345c8adf Assembly-CSharp.dll:.GunAim
 a2efb0db652b8114d1ae7dd9a600d626 Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.InputAxisScrollbar
@@ -181,7 +179,6 @@ a7d3c6c6948d99dd4116e659ddcf5ac4 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 83877f03b51b3b13fa0d6c51291e0575 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Characters.FirstPerson.HeadBob
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl
 a90e94673f50d2237c1b971c138660c6 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMoveAndRotate
-7bb489c9bfce9da3640740955a31e90a Assembly-CSharp.dll:.RewardController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:.ForcedReset
 57fde8e76fc7bce23deb0e799d336be7 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.SmoothFollow
 cfa93710d56cd4da2a3b2eec27bc1139 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Water.PlanarReflection
@@ -297,8 +294,8 @@ b3432dfe180f02232d7612fb366593d3 Assembly-CSharp.dll:UnityStandardAssets.ImageEf
 b47e983410502d3936860aba2bd659d8 Assembly-CSharp.dll:.Restore
 9329bfa8727c9ea9012b1e26b08be196 Assembly-CSharp.dll:.BananaArea
 3ae0dad0b55a80319e1d57c2dce28da7 Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.Tonemapping
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.RestoreChest
 022cf2da8ce15cf719e26cc060ef225d Assembly-CSharp.dll:.TemplateAgent
 22c49f4992e24b14c537d18c1c061c53 Assembly-CSharp.dll:.Ball3DAgent
 551fad68c163da4d709330167b1f58b1 Assembly-CSharp.dll:.AgentSoccer
 0f3d4bb7128a287827d041c696039525 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMobileShaderSwitch
+3b207bd69c8fe07f9a135058557d9c66 Assembly-CSharp.dll:.SpawnerController

@@ -15,8 +15,11 @@ public class DynamicRewardController : MonoBehaviour {
 
 	private float timer;
 	private float counter;
-
+	public GameObject[]zombieSpawn= new GameObject[46];
+	public GameObject[] playerSpawn = new GameObject[12];
 	public TrainingConfiguration trainer;
+	private int randomZombieSpawn;
+	private int randomPlayerSpawn;
 
 	void Start (){
 		agent = GetComponent<DynamicZombieAgent> ();
@@ -26,13 +29,15 @@ public class DynamicRewardController : MonoBehaviour {
 
 	void Update () {
 		timer += Time.deltaTime;
+		randomPlayerSpawn = Random.Range (0, 12);
+		randomZombieSpawn = Random.Range (0, 46);
 
-		chest = GameObject.FindGameObjectWithTag ("chest");
-		chestRandomPosition= new Vector3(Random.Range(pivot.transform.position.x - 45,pivot.transform.position.x + 45), pivot.transform.position.y+1.5f, Random.Range (pivot.transform.position.z - 45,pivot.transform.position.z + 45));
+		/*chest = GameObject.FindGameObjectWithTag ("chest");
+		/*chestRandomPosition= new Vector3(Random.Range(pivot.transform.position.x - 45,pivot.transform.position.x + 45), pivot.transform.position.y+1.5f, Random.Range (pivot.transform.position.z - 45,pivot.transform.position.z + 45));
 		randomPosition= new Vector3(Random.Range(pivot.transform.position.x - 45,pivot.transform.position.x + 45), pivot.transform.position.y, Random.Range (pivot.transform.position.z - 45,pivot.transform.position.z + 45));
 
 		if (Vector3.Distance (gameObject.transform.position, pivot.transform.position) > 100)
-			gameObject.transform.position = randomPosition;
+			gameObject.transform.position = randomPosition;*/
 
 
 
@@ -47,7 +52,8 @@ public class DynamicRewardController : MonoBehaviour {
 				agent.SetReward (-1f); //Assegno un malus alto 
 				agent.Done ();
 
-				gameObject.transform.position = randomPosition;
+				gameObject.transform.position = zombieSpawn [randomZombieSpawn].transform.position;
+				//gameObject.transform.position = randomPosition;
 
 			}
 
@@ -121,8 +127,10 @@ public class DynamicRewardController : MonoBehaviour {
 			agent.SetReward (4f);//Assegno una ricompensa di 2f( alta)
 			agent.Done (); //L'agente ha fatto il suo dovere
 			Debug.Log("Hitted");
-			player.transform.position = chestRandomPosition;
-			gameObject.transform.position = randomPosition; //Rispawna il cubetto random per ricominciare la ricerca
+			//player.transform.position = chestRandomPosition;
+			//gameObject.transform.position = randomPosition; //Rispawna il cubetto random per ricominciare la ricerca
+			gameObject.transform.position = zombieSpawn [randomZombieSpawn].transform.position;
+			player.transform.position = playerSpawn [randomPlayerSpawn].transform.position;
 		} else {
 			Debug.Log ("Fail");
 			agent.SetReward (-2f);
