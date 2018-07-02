@@ -122,7 +122,7 @@ public class DynamicZombieAgent : Agent {
 
 	public override void AgentAction(float[] vectorAction, string textAction)
 	{
-		AddReward(-1f / agentParameters.maxStep);//Assegno un malus per incentivare la velocità di esecuzione
+		AddReward(-0.5f / agentParameters.maxStep);//Assegno un malus per incentivare la velocità di esecuzione
 		MoveAgent(vectorAction);
 	}
 

@@ -1988,7 +1988,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1476645075150404}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 60
   m_Drag: 1
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -2025,7 +2025,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114327052475901444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2052,10 +2051,10 @@ MonoBehaviour:
   brain: {fileID: 0}
   agentParameters:
     agentCameras: []
-    maxStep: 0
+    maxStep: 10000
     resetOnDone: 1
     onDemandDecision: 0
-    numberOfActionsBetweenDecisions: 1
+    numberOfActionsBetweenDecisions: 5
   ZombieBrain: {fileID: 0}
   ZombieBrainChest: {fileID: 0}
   NoZombieBrain: {fileID: 0}
@@ -2161,11 +2160,9 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: c1f8685d31255cb4a9bff0f78d718b36, type: 2}
   m_StaticBatchInfo:
@@ -2178,7 +2175,6 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

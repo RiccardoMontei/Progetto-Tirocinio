@@ -123,7 +123,7 @@ public class DynamicRewardController : MonoBehaviour {
 	private void TryToAttack(){
 		Debug.Log ("OnTry");
 		Debug.Log (Vector3.Distance (transform.position, player.transform.position));
-		if (Vector3.Distance (transform.position, player.transform.position) <= 4f) {
+		if (Vector3.Distance (transform.position, player.transform.position) <= 4.1f) {
 			agent.AddReward (4f);//Assegno una ricompensa di 2f( alta)
 			agent.Done (); //L'agente ha fatto il suo dovere
 			Debug.Log("Hitted");
