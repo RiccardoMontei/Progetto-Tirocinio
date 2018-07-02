@@ -35,6 +35,9 @@ public class GUIController : MonoBehaviour {
 
 
 	void Update () {
+		if (player == null) {
+			player = GameObject.FindGameObjectWithTag ("player");
+		}
 		UpdateHealthBar ();
 		UpdateStaminaBar ();
 		UpdateWeaponIcon ();

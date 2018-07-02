@@ -29,8 +29,8 @@ public class DynamicRewardController : MonoBehaviour {
 
 	void Update () {
 		timer += Time.deltaTime;
-		randomPlayerSpawn = Random.Range (0, 12);
-		randomZombieSpawn = Random.Range (0, 46);
+		randomPlayerSpawn = Random.Range (0, playerSpawn.Length);
+		randomZombieSpawn = Random.Range (0, zombieSpawn.Length);
 
 		/*chest = GameObject.FindGameObjectWithTag ("chest");
 		/*chestRandomPosition= new Vector3(Random.Range(pivot.transform.position.x - 45,pivot.transform.position.x + 45), pivot.transform.position.y+1.5f, Random.Range (pivot.transform.position.z - 45,pivot.transform.position.z + 45));
@@ -46,7 +46,7 @@ public class DynamicRewardController : MonoBehaviour {
 		if (trainer.zombieBrainTrainer || trainer.noZombieBrainTrainer) { //Se sto addestrando Zombie Brain) 
 
 			if (other.gameObject.CompareTag ("player") ){// e il cubo tocca il player
-				agent.SetReward (-0.1f);//Assegno una ricompensa di 2f( alta)
+				//agent.SetReward (-0.1f);//Assegno una ricompensa di 2f( alta)
 			}
 			if (other.gameObject.CompareTag ("block") ) {//Se il cubo tocca un'altro cubo
 				agent.SetReward (-1f); //Assegno un malus alto 
@@ -124,7 +124,7 @@ public class DynamicRewardController : MonoBehaviour {
 		Debug.Log ("OnTry");
 		Debug.Log (Vector3.Distance (transform.position, player.transform.position));
 		if (Vector3.Distance (transform.position, player.transform.position) <= 4f) {
-			agent.SetReward (4f);//Assegno una ricompensa di 2f( alta)
+			agent.AddReward (4f);//Assegno una ricompensa di 2f( alta)
 			agent.Done (); //L'agente ha fatto il suo dovere
 			Debug.Log("Hitted");
 			//player.transform.position = chestRandomPosition;
@@ -133,8 +133,8 @@ public class DynamicRewardController : MonoBehaviour {
 			player.transform.position = playerSpawn [randomPlayerSpawn].transform.position;
 		} else {
 			Debug.Log ("Fail");
-			agent.SetReward (-2f);
-			agent.Done ();
+			agent.AddReward (-1f);
+			//agent.Done ();
 			}
 	}
 }
