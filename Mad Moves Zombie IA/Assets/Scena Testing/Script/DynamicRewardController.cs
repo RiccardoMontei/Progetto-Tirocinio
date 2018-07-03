@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DynamicRewardController : MonoBehaviour {
 
@@ -9,14 +10,19 @@ public class DynamicRewardController : MonoBehaviour {
 	private Vector3 randomPosition;
 	private Vector3 chestRandomPosition;
 
+	public GameObject [] players= new GameObject[15];
 	public GameObject player;
+	public float minDistance=5000.0f;
 	public GameObject pivot;
 	private GameObject chest;
+
+	public Text counterText;
+
 
 	private float timer;
 	private float counter;
 	public GameObject[]zombieSpawn= new GameObject[46];
-	public GameObject[] playerSpawn = new GameObject[12];
+	public GameObject[] playerSpawn = new GameObject[22];
 	public TrainingConfiguration trainer;
 	private int randomZombieSpawn;
 	private int randomPlayerSpawn;
@@ -32,28 +38,25 @@ public class DynamicRewardController : MonoBehaviour {
 		randomPlayerSpawn = Random.Range (0, playerSpawn.Length);
 		randomZombieSpawn = Random.Range (0, zombieSpawn.Length);
 
-		/*chest = GameObject.FindGameObjectWithTag ("chest");
-		/*chestRandomPosition= new Vector3(Random.Range(pivot.transform.position.x - 45,pivot.transform.position.x + 45), pivot.transform.position.y+1.5f, Random.Range (pivot.transform.position.z - 45,pivot.transform.position.z + 45));
-		randomPosition= new Vector3(Random.Range(pivot.transform.position.x - 45,pivot.transform.position.x + 45), pivot.transform.position.y, Random.Range (pivot.transform.position.z - 45,pivot.transform.position.z + 45));
-
-		if (Vector3.Distance (gameObject.transform.position, pivot.transform.position) > 100)
-			gameObject.transform.position = randomPosition;*/
-
-
-
+		for (int i = 0; i < players.Length; i++) {
+			if (players [i].activeInHierarchy) {
+				if (Vector3.Distance (gameObject.transform.position, players [i].transform.position) < minDistance) {
+					minDistance = Vector3.Distance (gameObject.transform.position, players [i].transform.position);
+					player = players [i];
+				}
+			} 
+				
+		}
 	}
 	public void OnCollisionEnter(Collision other){
 		if (trainer.zombieBrainTrainer || trainer.noZombieBrainTrainer) { //Se sto addestrando Zombie Brain) 
 
-			if (other.gameObject.CompareTag ("player") ){// e il cubo tocca il player
-				//agent.SetReward (-0.1f);//Assegno una ricompensa di 2f( alta)
-			}
 			if (other.gameObject.CompareTag ("block") ) {//Se il cubo tocca un'altro cubo
 				agent.SetReward (-1f); //Assegno un malus alto 
 				agent.Done ();
 
 				gameObject.transform.position = zombieSpawn [randomZombieSpawn].transform.position;
-				//gameObject.transform.position = randomPosition;
+
 
 			}
 
@@ -127,14 +130,17 @@ public class DynamicRewardController : MonoBehaviour {
 			agent.AddReward (4f);//Assegno una ricompensa di 2f( alta)
 			agent.Done (); //L'agente ha fatto il suo dovere
 			Debug.Log("Hitted");
-			//player.transform.position = chestRandomPosition;
-			//gameObject.transform.position = randomPosition; //Rispawna il cubetto random per ricominciare la ricerca
+
+			GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().hitCount += 1;
+			if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().hitCount % 5 == 0 && GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().hitCount != 0)
+				players [Random.Range (0, players.Length)].SetActive (false);
+			counterText.text =GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().hitCount.ToString ();
 			gameObject.transform.position = zombieSpawn [randomZombieSpawn].transform.position;
 			player.transform.position = playerSpawn [randomPlayerSpawn].transform.position;
 		} else {
 			Debug.Log ("Fail");
-			agent.AddReward (-1f);
-			//agent.Done ();
-			}
+			agent.AddReward (-0.5f);
+			agent.Done ();
+		}
 	}
 }
