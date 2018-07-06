@@ -21,8 +21,6 @@ public class DynamicZombieAgent : Agent {
 	public GameObject bounds;//Muri della mappa
 	public GameObject chest;//Chest di rifornimento
 
-
-
 	RayPerception rayPer;
 	DynamicZombieAccademy academy;
 
@@ -68,7 +66,7 @@ public class DynamicZombieAgent : Agent {
 
 		detectableObjects = new string[] { "player", "ground", "block","chest" };
 
-		AddVectorObs(rayPer.Perceive(rayDistance, rayAngles, detectableObjects, 1.5f, 0f));
+		//AddVectorObs(rayPer.Perceive(rayDistance, rayAngles, detectableObjects, 1.5f, 0f));
 		AddVectorObs(rayPer.Perceive(rayDistance, rayAngles, detectableObjects, 2.5f, 0f));
 		AddVectorObs((float)GetStepCount() / (float)agentParameters.maxStep);
 
@@ -126,7 +124,7 @@ public class DynamicZombieAgent : Agent {
 		MoveAgent(vectorAction);
 	}
 
-	void update(){
+	void Update(){
 		timer += Time.deltaTime;//Incremento il timer
 
 	}

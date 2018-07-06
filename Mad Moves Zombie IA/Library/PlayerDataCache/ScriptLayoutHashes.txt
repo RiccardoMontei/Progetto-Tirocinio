@@ -140,7 +140,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 b32fc9c33e29338c011255206cbee2ff Assembly-CSharp.dll:.Ball3DAcademy
 78a2a366a0a3b585e1178d2dd9d006ab Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.WaypointProgressTracker
 ed7ccd26b1dc12db9621c9097656c993 Assembly-CSharp.dll:.GridAgent
-8920f80a231adc59a3a72d4b2ab8d1a4 Assembly-CSharp.dll:.GameController
+6962136ffa9afb3c267e3d38d5418b66 Assembly-CSharp.dll:.GameController
 3b207bd69c8fe07f9a135058557d9c66 Assembly-CSharp.dll:.SpawnerController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BasicDecision
 22df741b1a3c6d3b215ca28ad83c5a3f Assembly-CSharp.dll:UnityStandardAssets.ImageEffects.ScreenSpaceAmbientObscurance
@@ -169,7 +169,7 @@ d6593c5b50c84ab0171d0b10c8dcb36e Assembly-CSharp.dll:.DynamicZombieAccademy
 37bf4d6a6d424731cb4a9b998783e5c6 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Characters.ThirdPerson.ThirdPersonCharacter
 4df86f437a61b08c14fd0adff88ddf71 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.ActivateTrigger
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.RandomDecision
-6d5437bdba775522fd6610a2c01fc213 Assembly-CSharp.dll:.DynamicRewardController
+b79b3cef549e461aa39762db04b44662 Assembly-CSharp.dll:.DynamicRewardController
 bde5f2ef2cc0af62c8e6c38839b1cd6b Assembly-CSharp.dll:.BananaAgent
 b7536247a550bc1596505b7f345c8adf Assembly-CSharp.dll:.GunAim
 a2efb0db652b8114d1ae7dd9a600d626 Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.InputAxisScrollbar

@@ -5,69 +5,53 @@ using UnityEngine.UI;
 
 public class DynamicRewardController : MonoBehaviour {
 
-	public DynamicZombieAgent agent;
+	private DynamicZombieAgent agent;
+	private GameController gameController;
 
-	private Vector3 randomPosition;
-	private Vector3 chestRandomPosition;
+	private GameObject player;
+	private bool hitted=false;
 
-	public GameObject [] players= new GameObject[15];
-	public GameObject player;
-	public float minDistance=5000.0f;
-	public GameObject pivot;
 	private GameObject chest;
 
-	public Text counterText;
+	private float timer = 0 ;
+	private float counter = 0 ;
 
-
-	private float timer;
-	private float counter;
 	public GameObject[]zombieSpawn= new GameObject[46];
-	public GameObject[] playerSpawn = new GameObject[22];
-	public TrainingConfiguration trainer;
-	private int randomZombieSpawn;
-	private int randomPlayerSpawn;
+
+	private TrainingConfiguration trainer;
+	private int randomZombieSpawn = 0 ;
+
+
+
 
 	void Start (){
+		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> (); //Il game Controller
 		agent = GetComponent<DynamicZombieAgent> ();
 		trainer= FindObjectOfType<TrainingConfiguration>();
-		counter = 0f;
 	}
 
 	void Update () {
 		timer += Time.deltaTime;
-		randomPlayerSpawn = Random.Range (0, playerSpawn.Length);
 		randomZombieSpawn = Random.Range (0, zombieSpawn.Length);
-
-		for (int i = 0; i < players.Length; i++) {
-			if (players [i].activeInHierarchy) {
-				if (Vector3.Distance (gameObject.transform.position, players [i].transform.position) < minDistance) {
-					minDistance = Vector3.Distance (gameObject.transform.position, players [i].transform.position);
-					player = players [i];
-				}
-			} 
-				
-		}
 	}
+
 	public void OnCollisionEnter(Collision other){
 		if (trainer.zombieBrainTrainer || trainer.noZombieBrainTrainer) { //Se sto addestrando Zombie Brain) 
-
-			if (other.gameObject.CompareTag ("block") ) {//Se il cubo tocca un'altro cubo
+			if (other.gameObject.CompareTag ("block")) {//Se lo zombie tocca un'altro zombie
 				agent.SetReward (-1f); //Assegno un malus alto 
 				agent.Done ();
 
 				gameObject.transform.position = zombieSpawn [randomZombieSpawn].transform.position;
-
-
 			}
-
 		}
+	}
+	/*
 		if (trainer.zombieBrainChestTrainer) { //Se sto addestrando Zombie Brain Chest) 
 
 			if (other.gameObject.CompareTag ("chest")) {// se il cubo tocca il chest
 				
 				agent.SetReward (-3f);
 				agent.Done ();
-				other.collider.transform.position = chestRandomPosition;
 
 			}
 		}
@@ -92,7 +76,7 @@ public class DynamicRewardController : MonoBehaviour {
 		}
 
 	}
-	public void OnTriggerStay(Collider other){
+	/*public void OnTriggerStay(Collider other){
 		if (trainer.noZombieBrainTrainer) { //Se sto addestrando no Zombie Brain) 
 
 			if (other.gameObject.CompareTag ("block")) { 
@@ -101,7 +85,6 @@ public class DynamicRewardController : MonoBehaviour {
 
 					agent.SetReward (1.5f); //Assegno una ricompensa sostanziosa per incentivare la vicinanza con i cubi
 					agent.Done ();
-					gameObject.transform.position = randomPosition;
 					timer = 0;
 					counter++;
 				}
@@ -115,32 +98,59 @@ public class DynamicRewardController : MonoBehaviour {
 
 					agent.SetReward (2f); //Assegno una ricompensa sostanzisa per incentivare la vicinanza
 					agent.Done ();
-					other.transform.position = chestRandomPosition;	
-					gameObject.transform.position = randomPosition;
 					timer = 0;
 					counter++;
 				}
 			}
 		}
-	}
-	private void TryToAttack(){
-		Debug.Log ("OnTry");
-		Debug.Log (Vector3.Distance (transform.position, player.transform.position));
-		if (Vector3.Distance (transform.position, player.transform.position) <= 4.1f) {
-			agent.AddReward (4f);//Assegno una ricompensa di 2f( alta)
-			agent.Done (); //L'agente ha fatto il suo dovere
-			Debug.Log("Hitted");
+	}*/
 
-			GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().hitCount += 1;
-			if (GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().hitCount % 5 == 0 && GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().hitCount != 0)
-				players [Random.Range (0, players.Length)].SetActive (false);
-			counterText.text =GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().hitCount.ToString ();
-			gameObject.transform.position = zombieSpawn [randomZombieSpawn].transform.position;
-			player.transform.position = playerSpawn [randomPlayerSpawn].transform.position;
+	private void OnTriggerStay( Collider objectHitted ){
+		//Se nel triggerdavanti lo zombie c'è il player
+		if (objectHitted.transform.gameObject.CompareTag ("player")){
+			player = objectHitted.transform.gameObject;//assegno quel player alla variabile
+			hitted = true; //lo sto colpendo!
+		}else{
+			player=null;
+			hitted=false;//Non lo sto colpendo in qualsiasi altro caso
+		}
+			
+	}
+
+	private void TryToAttack(){//Funzione evento dell'animazione di attacco, richiamata nel frame in cui la mano è alla massima estensione(Dentro il trigger)
+		if (hitted) {//Se sto colpendo nel momento di massima estensione
+
+			agent.AddReward (6f);//Assegno una ricompensa alta
+
+			Debug.Log ("Hitted");
+			gameController.hitCount += 1; 
+
+			gameObject.transform.position = zombieSpawn [randomZombieSpawn].transform.position;//Repawno lo zombie TODO decidere se lasciarlo o meno
+			gameController.RespawnFunction(player); //Respawno il player
+
+
+			//Eliminazione graduale players
+			if (gameController.hitCount == 50) 
+				player.SetActive (false);
+
+			if (gameController.hitCount == 90) 
+				player.SetActive (false);
+
+			if (gameController.hitCount == 120) 
+				player.SetActive (false);
+
+			if (gameController.hitCount == 140) 
+				player.SetActive (false);
+
+			if (gameController.hitCount == 150) 
+				player.SetActive (false);
+
+			agent.Done (); //L'agente ha fatto il suo dovere
+			hitted=false; //Proteggo l'operazione per essere sicuro che sia atomica
+		
 		} else {
-			Debug.Log ("Fail");
-			agent.AddReward (-0.5f);
-			agent.Done ();
+			hitted = false;//Se non sto colpendo hitted per sicurezza chiudo il flag
+			agent.AddReward (-0.5f);// Malus alto
 		}
 	}
 }
