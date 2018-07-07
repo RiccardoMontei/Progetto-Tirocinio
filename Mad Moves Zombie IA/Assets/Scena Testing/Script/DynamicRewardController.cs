@@ -120,7 +120,7 @@ public class DynamicRewardController : MonoBehaviour {
 	private void TryToAttack(){//Funzione evento dell'animazione di attacco, richiamata nel frame in cui la mano è alla massima estensione(Dentro il trigger)
 		if (hitted) {//Se sto colpendo nel momento di massima estensione
 
-			agent.AddReward (6f);//Assegno una ricompensa alta
+			agent.SetReward (10f);//Assegno una ricompensa alta
 
 			Debug.Log ("Hitted");
 			gameController.hitCount += 1; 

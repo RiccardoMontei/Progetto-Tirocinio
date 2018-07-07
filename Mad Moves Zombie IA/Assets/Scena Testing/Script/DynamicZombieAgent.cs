@@ -64,7 +64,7 @@ public class DynamicZombieAgent : Agent {
 		float[] rayAngles = { -20f, -10f, 0f, 10f, 20f, 30f, 40f, 50f, 60f, 70f, 80f, 90f, 100f, 110f, 120f , 130f, 140f, 150f, 160f, 170f, 180f, 190f, 200f };
 		string[] detectableObjects;
 
-		detectableObjects = new string[] { "player", "ground", "block","chest" };
+		detectableObjects = new string[] { "player", "Untagged", "block","chest" };
 
 		//AddVectorObs(rayPer.Perceive(rayDistance, rayAngles, detectableObjects, 1.5f, 0f));
 		AddVectorObs(rayPer.Perceive(rayDistance, rayAngles, detectableObjects, 2.5f, 0f));
