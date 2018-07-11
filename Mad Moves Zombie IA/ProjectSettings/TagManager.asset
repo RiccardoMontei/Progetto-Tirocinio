@@ -27,6 +27,7 @@ TagManager:
   - redAgent
   - Pivot
   - chest
+  - zombieSpawn
   layers:
   - Default
   - TransparentFX

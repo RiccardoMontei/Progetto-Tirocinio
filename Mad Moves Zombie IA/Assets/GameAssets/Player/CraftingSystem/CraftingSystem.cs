@@ -33,9 +33,9 @@ public class CraftingSystem : MonoBehaviour {
 				if (hit.transform.gameObject.CompareTag("Ground")) 
 				{
 					if (Input.GetKeyDown (KeyCode.E))
-					if (wood >= 6 && rope >= 2) {
+					if (wood >= 4 && rope >= 2) {
 						Instantiate (fence, pivotFence.transform.position, pivotFence.transform.rotation);
-						wood -= 6;
+						wood -= 4;
 						rope -= 2;
 					}
 				}

@@ -5,21 +5,11 @@ using UnityEngine;
 public class DynamicZombieAgent : Agent {
 
 	Animator animator;
-
-	private int config = 0;//Determina che cervello si sta usando (default No Zombie Brain)
-	private bool isBrainSwitched = false; //Booleano di controllo sul cambiamento di cervello (protezione del cambio)
-	private float timer=0;
-
-	public Brain ZombieBrain;
-
-	public Brain ZombieBrainChest;
-
-	public Brain NoZombieBrain;
-
 	public GameObject area; //Game area
 	public GameObject player; //The player
 	public GameObject bounds;//Muri della mappa
 	public GameObject chest;//Chest di rifornimento
+	private int theAction=0;
 
 	RayPerception rayPer;
 	DynamicZombieAccademy academy;
@@ -28,25 +18,13 @@ public class DynamicZombieAgent : Agent {
 	private Rigidbody zombieRB;  //cached on initialization
 	private Rigidbody playerRB;  //cached on initialization
 
-	public TrainingConfiguration trainer; //Contiene le info su cosa si stia facendo, attaccato all'academy
 
 	/* Per addestrare un cervello basta andare su "Acaemy" nell'inspector e selezionare il flag di addestramento true più il flag di quale cervello si voglia addestrare, 
 	 * tutte le porzioni di codice adibite ad addestramento hanno il controllo su quei flag, e anche la selezione del cervello lo ha.*/
 
 	void Start (){
 		academy = FindObjectOfType<DynamicZombieAccademy> ();
-		trainer= FindObjectOfType<TrainingConfiguration>();
-
-		if (trainer.zombieBrainTrainer)
-			brain = ZombieBrain;
-
-		if (trainer.noZombieBrainTrainer)
-			brain = NoZombieBrain;
-
-		if (trainer.zombieBrainChestTrainer)
-				brain = ZombieBrainChest;
-		
-	}
+}
 		
 
 	public override void InitializeAgent()
@@ -80,6 +58,7 @@ public class DynamicZombieAgent : Agent {
 		Vector3 rotateDir = Vector3.zero;
 
 		int action = Mathf.FloorToInt(act[0]);
+		theAction = action;
 
 		switch (action) {
 		case 0:
@@ -124,60 +103,9 @@ public class DynamicZombieAgent : Agent {
 		MoveAgent(vectorAction);
 	}
 
-	void Update(){
-		timer += Time.deltaTime;//Incremento il timer
-
+	public int getAction(){
+		return theAction;
 	}
 
-	void FixedUpdate(){
 
-		GameObject hit = rayPer.objectObserved; //Oggetto osservato dall'agente
-
-		if(hit!= null)
-
-		if (!trainer.activeTraining && hit !=null) {//Se non sto addestrando attivo lo switch dei cervelli
-
-			if ((config == 0 || config == 2) ) { //Se sono in No zombie brain o in Zombie Brain Chest(priorità al player)
-				if (hit.CompareTag ("player")) { // e vedo il player
-					config = 1; //assegno il Zombie Brain
-					ConfigureAgent (config); 
-					timer = 0;
-					isBrainSwitched = true;
-					Debug.Log (brain);
-				}
-			}
-
-			if (config == 0) {
-				if (hit.CompareTag ("chest")) {
-					config = 2;
-					ConfigureAgent (config);
-					timer = 0;
-					isBrainSwitched = true;
-					Debug.Log (brain);
-
-				}
-			}
-
-			if (config != 0 && timer > 20 ){
-				isBrainSwitched = false;  
-				config = 0;
-				ConfigureAgent (config);
-				Debug.Log (brain);
-			}
-
-
-		}
-	}
-
-	void ConfigureAgent(int Config){ // funzione di Switch per i cervelli
-		if (Config == 0) {
-			GiveBrain (NoZombieBrain);
-		}
-		if (Config == 1) {
-			GiveBrain (ZombieBrain);
-		}
-		if (Config == 2) {
-			GiveBrain (ZombieBrainChest);
-		}
-	}
 }

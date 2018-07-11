@@ -60,8 +60,9 @@
      <Compile Include="Assets\GameAssets\Player\Scripts\PlayerScripts\WeaponsManager.cs" />
      <Compile Include="Assets\GameAssets\Scripts 4 MA\DynamicZombieAccademy.cs" />
      <Compile Include="Assets\GameAssets\Scripts 4 MA\DynamicZombieAgent.cs" />
-     <Compile Include="Assets\GameAssets\Scripts 4 MA\TrainingConfiguration.cs" />
-     <Compile Include="Assets\GameAssets\Scripts 4 MA\ZombieBrain\DynamicRewardController.cs" />
+     <Compile Include="Assets\GameAssets\Scripts 4 MA\NoZombieBrain\CollisionDetector.cs" />
+     <Compile Include="Assets\GameAssets\Scripts 4 MA\NoZombieBrain\RewardControllerNoZombie.cs" />
+     <Compile Include="Assets\GameAssets\Scripts 4 MA\ZombieBrain\RewardControllerZombie.cs" />
      <Compile Include="Assets\GameAssets\Zombies\Script\GameController.cs" />
      <Compile Include="Assets\GameAssets\Zombies\Script\SpawnerController.cs" />
      <Compile Include="Assets\GameAssets\Zombies\Script\ZombieController.cs" />
