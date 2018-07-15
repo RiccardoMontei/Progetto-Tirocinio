@@ -9,7 +9,6 @@ public class DynamicZombieAgent : Agent {
 	public GameObject player; //The player
 	public GameObject bounds;//Muri della mappa
 	public GameObject chest;//Chest di rifornimento
-	private int theAction=0;
 
 	RayPerception rayPer;
 	DynamicZombieAccademy academy;
@@ -58,7 +57,8 @@ public class DynamicZombieAgent : Agent {
 		Vector3 rotateDir = Vector3.zero;
 
 		int action = Mathf.FloorToInt(act[0]);
-		theAction = action;
+
+		ActionControl (action);
 
 		switch (action) {
 		case 0:
@@ -94,7 +94,6 @@ public class DynamicZombieAgent : Agent {
 		}
 		transform.Rotate (rotateDir, Time.fixedDeltaTime * 150f);
 
-
 	}
 
 	public override void AgentAction(float[] vectorAction, string textAction)
@@ -103,9 +102,23 @@ public class DynamicZombieAgent : Agent {
 		MoveAgent(vectorAction);
 	}
 
-	public int getAction(){
-		return theAction;
-	}
+	private void ActionControl(int action){
+		Debug.Log (action);
+		switch (brain.name) {
+		case "NoZombieBrain":
+			if (action == 2 || action == 3) {
+				this.SetReward (-4f);
+				this.Done ();
+			}
+			break;
+		case "ZombieBrainChest":
+			if (action == 2 || action == 3) {
+				this.SetReward (-4f);
+				this.Done ();
+			}
+			break;
+		}
 
+	}
 
 }

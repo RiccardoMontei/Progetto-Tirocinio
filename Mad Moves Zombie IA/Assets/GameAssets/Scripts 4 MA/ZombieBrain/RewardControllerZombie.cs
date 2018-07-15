@@ -85,7 +85,7 @@ public class RewardControllerZombie : MonoBehaviour {
 		
 		} else {
 			hitted = false;//Se non sto colpendo hitted per sicurezza chiudo il flag
-			agent.AddReward (-0.5f);// Malus alto
+			//agent.AddReward (-0.5f);// Malus alto
 		}
 	}
 }

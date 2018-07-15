@@ -28,6 +28,7 @@ TagManager:
   - Pivot
   - chest
   - zombieSpawn
+  - chestSpawn
   layers:
   - Default
   - TransparentFX

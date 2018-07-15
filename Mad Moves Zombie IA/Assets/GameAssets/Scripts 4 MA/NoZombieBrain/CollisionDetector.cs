@@ -5,9 +5,41 @@ using UnityEngine;
 public class CollisionDetector : MonoBehaviour {
 	private bool zombieNear=false;
 	private float timer = 0;
+	private bool chestNear = false;
+
+	public int mult = 1;
 
 	void Update(){
-		if (zombieNear) {
+		if (chestNear && timer < 30) {
+			timer += Time.deltaTime;
+		}
+	}
+
+	void OnTriggerEnter(Collider other){
+	
+		if(other.transform.gameObject.CompareTag("chest")){
+			chestNear = true;
+			timer = 0;
+		}
+
+	}
+
+	void OnTriggerStay(Collider other){
+		if (other.transform.gameObject.CompareTag ("chest")) {
+			chestNear = true;
+		}
+	}
+
+	void OnTriggerExit(Collider other){
+		if (other.transform.gameObject.CompareTag ("chest")) {
+			chestNear = false;
+			timer = 0;
+		}
+	}
+
+	/*
+	void Update(){
+		if (zombieNear && timer < 30) {
 			timer += Time.deltaTime;
 		}
 	}
@@ -16,16 +48,29 @@ public class CollisionDetector : MonoBehaviour {
 		if (other.transform.gameObject.CompareTag ("block") && other.transform.gameObject != gameObject.transform.parent.gameObject) {
 			Debug.Log (other.transform.tag);
 			zombieNear = true;	
+			mult++;
 			timer = 0;
+		}
+	}
+
+	void OnTriggerStay(Collider other){
+		if (other.transform.gameObject.CompareTag ("block") && other.transform.gameObject != gameObject.transform.parent.gameObject) {
+			Debug.Log (other.transform.tag);
+			zombieNear = true;	
 		}
 	}
 
 	void OnTriggerExit(Collider other){
 		if (other.transform.gameObject.CompareTag ("block") && other.transform.gameObject != gameObject.transform.parent.gameObject) {
 			zombieNear = false;	
+			if (mult > 1) {
+				mult--;
+			}
 			timer = 0;
 		}
 	}
+
+	*/
 
 	public float getTimer(){
 		return timer;
@@ -34,4 +79,5 @@ public class CollisionDetector : MonoBehaviour {
 	public void resetTimer(){
 		timer = 0;
 	}
+
 }
