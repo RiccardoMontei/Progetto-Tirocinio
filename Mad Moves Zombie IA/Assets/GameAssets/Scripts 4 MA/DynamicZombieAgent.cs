@@ -103,15 +103,17 @@ public class DynamicZombieAgent : Agent {
 	}
 
 	private void ActionControl(int action){
-		Debug.Log (action);
+			
 		switch (brain.name) {
 		case "NoZombieBrain":
+			
 			if (action == 2 || action == 3) {
 				this.SetReward (-4f);
 				this.Done ();
 			}
 			break;
 		case "ZombieBrainChest":
+
 			if (action == 2 || action == 3) {
 				this.SetReward (-4f);
 				this.Done ();

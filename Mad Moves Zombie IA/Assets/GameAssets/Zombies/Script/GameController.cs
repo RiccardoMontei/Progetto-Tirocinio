@@ -8,8 +8,10 @@ public class GameController : MonoBehaviour {
 
 	private int randomPlayerSpawn=0 ; //Indice di spawn random per il player
 
-	public GameObject[] playerSpawn = new GameObject[55]; //Attay di spawn
+	public GameObject[] playerSpawn; 
 	public GameObject[] chestSpawns;
+
+	public int deactivedCHests = 0;
 
 	private bool flagI = true; //Indice di scorrimento arry spawns dal basso
 	private int indexI = 1 ;
@@ -20,6 +22,7 @@ public class GameController : MonoBehaviour {
 	public Text counterText;
 
 	void Start(){
+		playerSpawn = GameObject.FindGameObjectsWithTag ("playerSpawns");
 		chestSpawns = GameObject.FindGameObjectsWithTag ("chestSpawn");
 
 	}
@@ -29,17 +32,9 @@ public class GameController : MonoBehaviour {
 		randomPlayerSpawn = Random.Range (0, playerSpawn.Length); //Valore random per lo spawn del player
 	}
 
-	public void ResetChest(){
-		for (int i = 0; i < chestSpawns.Length; i++) {
-			int j = Random.Range (0, chestSpawns.Length);
-			if (!chestSpawns [j].activeInHierarchy) {
-				chestSpawns [i].SetActive (false);
-				chestSpawns [j].SetActive (true);
-			} else if(!chestSpawns[i].activeInHierarchy) {
-				chestSpawns [j].SetActive (false);
-				chestSpawns [i].SetActive (true);
-			}
-		}
+	public void ResetChest(GameObject chest){
+		int i = Random.Range (0, chestSpawns.Length);
+		chest.transform.position = chestSpawns [i].transform.position;
 	}
 
 	//Funzione che respawna il player usando indici univoci per ciascun player 

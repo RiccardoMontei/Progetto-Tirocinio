@@ -8,7 +8,7 @@ public class RewardControllerNoZombie: MonoBehaviour {
 	private GameController gameController;
 	private RayPerception rayPerceptor;
 	public GameObject detector;
-	private CollisionDetector collisionDetector;
+	private CollisionDetectorGroup collisionDetector;
 
 	private int timing=5;
 	private GameObject[]zombieSpawn;
@@ -16,7 +16,7 @@ public class RewardControllerNoZombie: MonoBehaviour {
 	private int randomZombieSpawn = 0 ;
 
 	void Start (){
-		collisionDetector = detector.GetComponent<CollisionDetector> ();
+		collisionDetector = detector.GetComponent<CollisionDetectorGroup> ();
 		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> (); //Il game Controller
 		agent = GetComponent<DynamicZombieAgent> ();
 		rayPerceptor = GetComponent<RayPerception> ();
@@ -27,7 +27,7 @@ public class RewardControllerNoZombie: MonoBehaviour {
 	void Update () {
 		randomZombieSpawn = Random.Range (0, zombieSpawn.Length);
 
-		if (collisionDetector.getTimer () > timing) {
+		if (collisionDetector.getTimer() > timing) {
 			agent.SetReward (2f * collisionDetector.mult);
 			gameController.hitCount++;
 			if (timing <= 29) {

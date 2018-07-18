@@ -29,6 +29,7 @@ TagManager:
   - chest
   - zombieSpawn
   - chestSpawn
+  - playerSpawns
   layers:
   - Default
   - TransparentFX
