@@ -20,6 +20,11 @@ public class GUIController : MonoBehaviour {
 	public Text currentWeaponName;
 	public Text currentBulletsCount;
 
+	//contatori di legna, corda e medikit
+	public Text currentWood;
+	public Text currentRope;
+	public Text currentMedikit;
+
 	//valori base per la vita e la stamina da usare per riempire le rispettive barre
 	private int maxHealth = 100;
 	private float currentHealth;
@@ -42,6 +47,14 @@ public class GUIController : MonoBehaviour {
 		UpdateStaminaBar ();
 		UpdateWeaponIcon ();
 		StatsController ();
+		CheckResources ();
+	}
+
+	//funzione per aggiornare i valori delle risorse
+	private void CheckResources(){
+		currentWood.text = "" + player.GetComponentInChildren<CraftingSystem> ().wood;
+		currentRope.text = "" + player.GetComponentInChildren<CraftingSystem> ().rope;
+		currentMedikit.text = "" + player.GetComponentInChildren<VitalityController> ().medikit;
 	}
 
 	//funzione di controllo per aggiornare le icone delle armi correnti

@@ -60,11 +60,14 @@ public class ShotFunctions : MonoBehaviour
         Debug.DrawRay(Fire.transform.position, Fire.transform.forward * 300, Color.black);
         if (Physics.Raycast(Fire.transform.position, Fire.transform.forward, out hit, 300))
         {//Se il raggio colpisce qualcosa!
-            if (hit.transform.gameObject.CompareTag("Zombie"))//Ed è uno zombie 
-            {
+			switch (hit.transform.tag) {
+			case "Zombie":
 				hit.transform.GetComponent<ZombieController> ().Hit (GetComponentInChildren<WeaponsDettails> ().damageForBullets);
-            }
-
+				break;
+			case "fence":
+				hit.transform.GetComponent<FenceLife> ().DecreaseLife (GetComponentInChildren<WeaponsDettails> ().damageForBullets / 2);
+				break;
+			}
         }
     }
 	public void OnStartKnifeHit(){

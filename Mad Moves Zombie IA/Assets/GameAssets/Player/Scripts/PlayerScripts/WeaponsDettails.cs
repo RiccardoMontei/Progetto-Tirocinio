@@ -10,6 +10,7 @@ public class WeaponsDettails : MonoBehaviour {
 	public float fieldOfViewAimWeapon;
 	public Vector3 pointOfViewAimWeapon;
 
+
 	// Use this for initialization
 	void Start () {
 		switch (gameObject.name) {

@@ -23,9 +23,10 @@ GameObject:
   - component: {fileID: 23884114873655978}
   - component: {fileID: 54519249538602924}
   - component: {fileID: 65354843492225256}
+  - component: {fileID: 114355959792790598}
   m_Layer: 0
   m_Name: Fence
-  m_TagString: Untagged
+  m_TagString: fence
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,9 +53,11 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: f723566745d78d945addb9aa25807320, type: 2}
   m_StaticBatchInfo:
@@ -67,6 +70,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -109,3 +113,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.6977763, y: 6.6912193, z: 5.5168195}
   m_Center: {x: -0.011843234, y: 2.997717, z: 0.20849204}
+--- !u!114 &114355959792790598
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1500780817821306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08d3fb253bd3c7d418d953250b592a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlesDestroy: {fileID: 1595771042417862, guid: 980870e217b33ec419decd98774e30db,
+    type: 2}

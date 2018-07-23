@@ -43,6 +43,8 @@ public class ChestScript : MonoBehaviour {
 				Instantiate (resources, transform.position + new Vector3(Random.Range(0f, 5f), 0.0f, Random.Range(0f, 5f)) , transform.rotation);
 				Instantiate (resources, transform.position + new Vector3(Random.Range(0f, 5f), 0.0f, Random.Range(0f, 5f)) , transform.rotation);
 				Instantiate (resources, transform.position + new Vector3(Random.Range(0f, 5f), 0.0f, Random.Range(0f, 5f)) , transform.rotation);
+				other.gameObject.GetComponentInChildren<WeaponsDettails> ().bulletsStored += Random.Range (30, 120);
+				other.gameObject.GetComponentInChildren<VitalityController> ().medikit += Random.Range (0, 3);
 				used = true;
 				Invoke ("KillMe", 5.0f);
 			}

@@ -70,7 +70,6 @@ public class WeaponsManager : MonoBehaviour {
 	}
 
 	private void Shot(){
-
 		if (activeWeapon) {
 			if (Input.GetButton ("Fire1") && YourWeapon ().GetComponent<WeaponsDettails> ().bulletsToShot >= 0 && !isCrafting) {//Se sparo e ho proiettili nel caricatore
 				animator.SetBool ("IsShotting", true); //Se non ho il caricatore vuoto

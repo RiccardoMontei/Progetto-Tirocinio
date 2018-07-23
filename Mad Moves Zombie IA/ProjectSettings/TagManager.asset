@@ -30,6 +30,7 @@ TagManager:
   - zombieSpawn
   - chestSpawn
   - playerSpawns
+  - fence
   layers:
   - Default
   - TransparentFX
