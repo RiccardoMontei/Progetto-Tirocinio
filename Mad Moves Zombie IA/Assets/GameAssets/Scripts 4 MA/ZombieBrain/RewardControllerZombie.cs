@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class RewardControllerZombie : MonoBehaviour {
 
 	private DynamicZombieAgent agent;
-	private GameController gameController;
+	private GameController4MA gameController;
 
 	private GameObject player;
 	private bool hitted=false;
@@ -21,7 +21,7 @@ public class RewardControllerZombie : MonoBehaviour {
 
 
 	void Start (){
-		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> (); //Il game Controller
+		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController4MA> (); //Il game Controller
 		agent = GetComponent<DynamicZombieAgent> ();
 		zombieSpawn = GameObject.FindGameObjectsWithTag ("zombieSpawn");
 	}

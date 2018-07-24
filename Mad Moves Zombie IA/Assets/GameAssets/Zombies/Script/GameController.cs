@@ -4,58 +4,58 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
-	public int hitCount = 0 ; //Counter dei colpi dati
+	private GameObject [] zombies;
+	private GameObject[] zombieSpawns;
+	private GameObject[] chestSpawn;
+	public GameObject chest;
 
-	private int randomPlayerSpawn=0 ; //Indice di spawn random per il player
+	private bool deactiveAll=true;
 
-	public GameObject[] playerSpawn; 
-	public GameObject[] chestSpawns;
+	private int wave =1;
+	public int zombiesInScene = 0;
+	private int maxZombiesinScene=0;
 
-	public int deactivedCHests = 0;
-
-	private bool flagI = true; //Indice di scorrimento arry spawns dal basso
-	private int indexI = 1 ;
-
-	private bool flagJ = false; //Indice di scorrimento arry spawns dal basso
-	private int indexJ = 54;
-
-	public Text counterText;
+	private float timer=0;
 
 	void Start(){
-		playerSpawn = GameObject.FindGameObjectsWithTag ("playerSpawns");
-		chestSpawns = GameObject.FindGameObjectsWithTag ("chestSpawn");
-
+		zombies = GameObject.FindGameObjectsWithTag ("block");
+		zombieSpawns = GameObject.FindGameObjectsWithTag ("zombieSpawn");
+		chestSpawn = GameObject.FindGameObjectsWithTag ("chestSpawn");
+	
+		for (int i = 0; i < zombies.Length; i++) {
+			zombies [i].SetActive (false);
+		}
 	}
 
 	void Update(){
-		counterText.text = hitCount.ToString (); //Aggirno il contatore degli hit
-		randomPlayerSpawn = Random.Range (0, playerSpawn.Length); //Valore random per lo spawn del player
+		timer += Time.deltaTime;
+		maxZombiesinScene = 10 + (wave * 5);
+		if (deactiveAll) {
+			for (int i = 0; i < zombies.Length; i++) {
+				zombies [i].SetActive (false);
+			}
+			deactiveAll = false;
+		}
+
+		if (wave % 3 == 0)
+			Instantiate (chest, chestSpawn [Random.Range (0, chestSpawn.Length)].transform);
+
+		if (zombiesInScene == 0 || timer > 420) {
+			do {
+				int index=Random.Range(0, zombies.Length);
+
+				if(!zombies[index].activeInHierarchy){
+					zombies[index].SetActive(true);
+					zombiesInScene++;
+				}
+			
+			} while(zombiesInScene < maxZombiesinScene);
+			timer = 0;
+			wave++;
+		}
+
+
 	}
 
-	public void ResetChest(GameObject chest){
-		int i = Random.Range (0, chestSpawns.Length);
-		chest.transform.position = chestSpawns [i].transform.position;
-	}
 
-	//Funzione che respawna il player usando indici univoci per ciascun player 
-	public void RespawnFunction(GameObject player){
-		if (hitCount < playerSpawn.Length) { //Se ho colpito il numero di spawns totali
-			if (!flagI) { // e l'ultimo ad essere stato colpito era in posizione "indexJ"
-				player.transform.position = playerSpawn [indexI].transform.position; //Spawno il player in "indexI"
-				if (indexI <= playerSpawn.Length)//Proteggo l'incremento
-					indexI++; //incremento l'indice
-				//Setto i flag corretti
-				flagI = true; 
-				flagJ = false;
-			}
-			if (!flagJ) {
-				player.transform.position = playerSpawn [indexJ].transform.position;
-				if (indexJ >= 0)
-					indexJ--;
-				flagI = false;
-				flagJ = true;
-			}
-		} else//Se ho colpito più di TOT volte spawno random
-			player.transform.position = playerSpawn [randomPlayerSpawn].transform.position;
-	}
 }

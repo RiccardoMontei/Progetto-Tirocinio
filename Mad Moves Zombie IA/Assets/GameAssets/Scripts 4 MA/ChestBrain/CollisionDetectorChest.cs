@@ -15,11 +15,11 @@ public class CollisionDetectorChest : MonoBehaviour {
 
 	private int timing=10;
 
-	private GameController gameController;
+	private GameController4MA gameController;
 
 	void Start(){
 		agent= gameObject.GetComponentInParent<DynamicZombieAgent> ();
-		gameController = FindObjectOfType<GameController> ();
+		gameController = FindObjectOfType<GameController4MA> ();
 	}
 	void Update(){
 		

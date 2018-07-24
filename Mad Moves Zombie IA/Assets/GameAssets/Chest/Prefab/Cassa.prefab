@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 114786677436654286}
   m_Layer: 0
   m_Name: Cassa
-  m_TagString: Untagged
+  m_TagString: chest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1059,8 +1059,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resources: {fileID: 1859900228664026, guid: 81f3e69865102744db04f3d79badfe4b, type: 2}
-  label: {fileID: 0}
-  open: {fileID: 0}
+  label: {fileID: 1517192427030708}
+  open: {fileID: 7400000, guid: 2e99d3443353a344698601ca8f3aaeb9, type: 3}
 --- !u!114 &114851818675658746
 MonoBehaviour:
   m_ObjectHideFlags: 1

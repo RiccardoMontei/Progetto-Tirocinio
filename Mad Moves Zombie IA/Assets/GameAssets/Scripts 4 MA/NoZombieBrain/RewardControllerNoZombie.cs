@@ -5,7 +5,7 @@ using UnityEngine;
 public class RewardControllerNoZombie: MonoBehaviour {
 
 	private DynamicZombieAgent agent;
-	private GameController gameController;
+	private GameController4MA gameController;
 	private RayPerception rayPerceptor;
 	public GameObject detector;
 	private CollisionDetectorGroup collisionDetector;
@@ -17,7 +17,7 @@ public class RewardControllerNoZombie: MonoBehaviour {
 
 	void Start (){
 		collisionDetector = detector.GetComponent<CollisionDetectorGroup> ();
-		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> (); //Il game Controller
+		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController4MA> (); //Il game Controller
 		agent = GetComponent<DynamicZombieAgent> ();
 		rayPerceptor = GetComponent<RayPerception> ();
 
