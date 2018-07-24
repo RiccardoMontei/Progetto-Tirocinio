@@ -61,8 +61,8 @@ public class ShotFunctions : MonoBehaviour
         if (Physics.Raycast(Fire.transform.position, Fire.transform.forward, out hit, 300))
         {//Se il raggio colpisce qualcosa!
 			switch (hit.transform.tag) {
-			case "Zombie":
-				hit.transform.GetComponent<ZombieController> ().Hit (GetComponentInChildren<WeaponsDettails> ().damageForBullets);
+			case "block":
+				hit.transform.GetComponent<ZombieScript> ().TakeDamage (GetComponentInChildren<WeaponsDettails> ().damageForBullets);
 				break;
 			case "fence":
 				hit.transform.GetComponent<FenceLife> ().DecreaseLife (GetComponentInChildren<WeaponsDettails> ().damageForBullets / 2);
@@ -70,9 +70,11 @@ public class ShotFunctions : MonoBehaviour
 			}
         }
     }
+
 	public void OnStartKnifeHit(){
 		knifeHit.Play ();
 	}
+
 	public void OnMiddleOfChangeWeapon(){
 		if (weaponsManager.changeWeapon) {
 			if (weaponsManager.weaponChanged) {

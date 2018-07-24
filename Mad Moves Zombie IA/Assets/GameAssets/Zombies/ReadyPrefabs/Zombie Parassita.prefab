@@ -415,6 +415,7 @@ GameObject:
   - component: {fileID: 114755766508329494}
   - component: {fileID: 114327052475901444}
   - component: {fileID: 65628805712445424}
+  - component: {fileID: 114801397977229372}
   m_Layer: 0
   m_Name: Zombie Parassita
   m_TagString: block
@@ -2024,6 +2025,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114327052475901444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2058,6 +2060,19 @@ MonoBehaviour:
   player: {fileID: 0}
   bounds: {fileID: 0}
   chest: {fileID: 0}
+--- !u!114 &114801397977229372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1476645075150404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4022c3cb83e14a14da54143f23ef5f15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  damage: 25
 --- !u!136 &136533936684831530
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2080,9 +2095,11 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: c1f8685d31255cb4a9bff0f78d718b36, type: 2}
   m_StaticBatchInfo:
@@ -2095,6 +2112,7 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
