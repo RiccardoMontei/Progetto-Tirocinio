@@ -8,7 +8,10 @@ public class GameController : MonoBehaviour {
 	private GameObject[] zombieSpawns;
 	private GameObject[] chestSpawn;
 	public GameObject chest;
+
 	public Text timerCounter;
+	public Text waves;
+	public Text zombieInsScene;
 
 	private bool deactiveAll=true;
 	private bool spawnedChests=false;
@@ -34,6 +37,8 @@ public class GameController : MonoBehaviour {
 	void Update(){
 		realTimer = 300 - (int)timer;
 		timerCounter.text = "Next wave:\n" + realTimer;
+		zombieInsScene.text ="Zombies: " + zombiesInScene;
+		waves.text = "Wave: " + (wave-1);
 		timer += Time.deltaTime;
 		maxZombiesinScene = 10 + (wave * 5);
 		if (deactiveAll) {

@@ -29,7 +29,7 @@ public class CraftingSystem : MonoBehaviour {
 
 			if (Physics.Raycast(transform.position, transform.forward, out hit, 7))
 			{//Se il raggio colpisce qualcosa!
-				Debug.Log (hit.transform.gameObject.tag);
+				
 				if (hit.transform.gameObject.CompareTag("ground")) 
 				{
 					if (Input.GetKeyDown (KeyCode.E))
