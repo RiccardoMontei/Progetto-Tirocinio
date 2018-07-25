@@ -10,6 +10,7 @@ public class ShotFunctions : MonoBehaviour
     private GameObject cartridge;
     
 	public GameObject bulletTrail; //effetto scia del proiettile
+	public GameObject blood;
 
 	public AudioSource reload ;
 	public AudioSource ak47Shot;
@@ -63,6 +64,7 @@ public class ShotFunctions : MonoBehaviour
 			switch (hit.transform.tag) {
 			case "block":
 				hit.transform.GetComponent<ZombieScript> ().TakeDamage (GetComponentInChildren<WeaponsDettails> ().damageForBullets);
+				Instantiate (blood, hit.point, hit.transform.rotation);
 				break;
 			case "fence":
 				hit.transform.GetComponent<FenceLife> ().DecreaseLife (GetComponentInChildren<WeaponsDettails> ().damageForBullets / 2);

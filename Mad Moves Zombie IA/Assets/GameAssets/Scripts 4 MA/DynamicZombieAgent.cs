@@ -17,14 +17,53 @@ public class DynamicZombieAgent : Agent {
 	private Rigidbody zombieRB;  //cached on initialization
 	private Rigidbody playerRB;  //cached on initialization
 
+	public Brain[] brains;
+	private bool defaultMode = false;
+	private int timerChangeBrain = 20;
+
 
 	/* Per addestrare un cervello basta andare su "Acaemy" nell'inspector e selezionare il flag di addestramento true più il flag di quale cervello si voglia addestrare, 
 	 * tutte le porzioni di codice adibite ad addestramento hanno il controllo su quei flag, e anche la selezione del cervello lo ha.*/
 
 	void Start (){
 		academy = FindObjectOfType<DynamicZombieAccademy> ();
-}
-		
+		this.brain = brains [0];
+		StartCoroutine(Cronometro ());
+	}
+
+	void Update(){
+		if (timerChangeBrain == 0 && defaultMode) {
+			this.brain = brains [1];
+		}
+	}
+
+	void FixedUpdate(){
+		if (GetComponent<RayPerception> ().objectObserved != null) {
+			if (GetComponent<RayPerception> ().objectObserved.gameObject.CompareTag ("player")) {
+				defaultMode = false;
+				timerChangeBrain = 20;
+				this.brain = brains [0];
+				Cronometro ();
+			}
+
+			if (this.brain.name == "NoZombieBrain" && GetComponent<RayPerception> ().objectObserved.gameObject.CompareTag ("chest")) {
+				defaultMode = false;
+				timerChangeBrain = 20;
+				this.brain = brains [2];
+				Cronometro ();
+			}
+		}
+	}
+
+	private IEnumerator Cronometro(){
+		while (timerChangeBrain >= 1) {
+			timerChangeBrain--;
+			yield return new WaitForSeconds (1f);
+
+		}
+
+		defaultMode = true;
+	}
 
 	public override void InitializeAgent()
 	{

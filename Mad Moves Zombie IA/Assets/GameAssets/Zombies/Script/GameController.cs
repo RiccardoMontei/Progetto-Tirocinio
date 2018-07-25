@@ -35,7 +35,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Update(){
-		realTimer = 300 - (int)timer;
+		realTimer = 180 - (int)timer;
 		timerCounter.text = "Next wave:\n" + realTimer;
 		zombieInsScene.text ="Zombies: " + zombiesInScene;
 		waves.text = "Wave: " + (wave-1);
@@ -59,7 +59,7 @@ public class GameController : MonoBehaviour {
 			spawnedChests = false;
 		}
 
-		if (zombiesInScene == 0 || timer > 300) {
+		if (zombiesInScene == 0 || timer > 180) {
 			do {
 				int index=Random.Range(0, zombies.Length);
 
