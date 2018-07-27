@@ -22,14 +22,14 @@ public class GameController4MA : MonoBehaviour {
 	public Text counterText;
 
 	void Start(){
-		playerSpawn = GameObject.FindGameObjectsWithTag ("playerSpawns");
-		chestSpawns = GameObject.FindGameObjectsWithTag ("chestSpawn");
+		//playerSpawn = GameObject.FindGameObjectsWithTag ("playerSpawns");
+		//chestSpawns = GameObject.FindGameObjectsWithTag ("chestSpawn");
 
 	}
 
 	void Update(){
-		counterText.text = hitCount.ToString (); //Aggirno il contatore degli hit
-		randomPlayerSpawn = Random.Range (0, playerSpawn.Length); //Valore random per lo spawn del player
+		//counterText.text = hitCount.ToString (); //Aggirno il contatore degli hit
+		//randomPlayerSpawn = Random.Range (0, playerSpawn.Length); //Valore random per lo spawn del player
 	}
 
 	public void ResetChest(GameObject chest){

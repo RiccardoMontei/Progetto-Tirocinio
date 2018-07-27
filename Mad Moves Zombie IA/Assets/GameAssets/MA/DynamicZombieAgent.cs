@@ -27,17 +27,20 @@ public class DynamicZombieAgent : Agent {
 
 	void Start (){
 		academy = FindObjectOfType<DynamicZombieAccademy> ();
-		this.brain = brains [1];
-		StartCoroutine(Cronometro ());
+		//this.brain = brains [1];
+		//StartCoroutine(Cronometro ());
 	}
 
 	void Update(){
+		/*
 		if (timerChangeBrain == 0 && defaultMode) {
 			this.brain = brains [1];
 		}
+		*/
 	}
 
 	void FixedUpdate(){
+		/*
 		if (GetComponent<RayPerception> ().objectObserved != null) {
 			if (GetComponent<RayPerception> ().objectObserved.gameObject.CompareTag ("player")) {
 				defaultMode = false;
@@ -53,6 +56,7 @@ public class DynamicZombieAgent : Agent {
 				Cronometro ();
 			}
 		}
+		*/
 	}
 
 	private IEnumerator Cronometro(){
@@ -137,7 +141,7 @@ public class DynamicZombieAgent : Agent {
 
 	public override void AgentAction(float[] vectorAction, string textAction)
 	{
-		AddReward(-0.5f / agentParameters.maxStep);//Assegno un malus per incentivare la velocità di esecuzione
+		AddReward(-1f / agentParameters.maxStep);//Assegno un malus per incentivare la velocità di esecuzione
 		MoveAgent(vectorAction);
 	}
 
@@ -147,14 +151,14 @@ public class DynamicZombieAgent : Agent {
 		case "NoZombieBrain":
 			
 			if (action == 2 || action == 3) {
-				this.SetReward (-4f);
+				this.SetReward (-5f);
 				this.Done ();
 			}
 			break;
 		case "ZombieBrainChest":
 
 			if (action == 2 || action == 3) {
-				this.SetReward (-4f);
+				this.SetReward (-5f);
 				this.Done ();
 			}
 			break;
