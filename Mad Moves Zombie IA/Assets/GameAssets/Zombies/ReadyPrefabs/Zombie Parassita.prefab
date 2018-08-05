@@ -2103,10 +2103,6 @@ MonoBehaviour:
   player: {fileID: 0}
   bounds: {fileID: 0}
   chest: {fileID: 0}
-  brains:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!136 &136314834811044098
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -5522,7 +5518,7 @@ ParticleSystemRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89

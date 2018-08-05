@@ -11,9 +11,9 @@ public class RewardControllerNoZombie: MonoBehaviour {
 	private CollisionDetectorGroup collisionDetector;
 
 	private int timing=5;
-	//private GameObject[]zombieSpawn;
+	private GameObject[]zombieSpawn;
 
-	//private int randomZombieSpawn = 0 ;
+	private int randomZombieSpawn = 0 ;
 
 	void Start (){
 		collisionDetector = detector.GetComponent<CollisionDetectorGroup> ();
@@ -21,22 +21,20 @@ public class RewardControllerNoZombie: MonoBehaviour {
 		agent = GetComponent<DynamicZombieAgent> ();
 		rayPerceptor = GetComponent<RayPerception> ();
 
-		//zombieSpawn = GameObject.FindGameObjectsWithTag ("zombieSpawn");
+		zombieSpawn = GameObject.FindGameObjectsWithTag ("zombieSpawn");
 	}
 
 	void Update () {
-		//randomZombieSpawn = Random.Range (0, zombieSpawn.Length);
+		randomZombieSpawn = Random.Range (0, zombieSpawn.Length);
 
-		if (collisionDetector.zombieNear) {
-			agent.SetReward (1f);
-			//gameController.hitCount++;
-			/*
+		if (collisionDetector.getTimer() > timing) {
+			agent.SetReward (2f * collisionDetector.mult);
+			gameController.hitCount++;
 			if (timing <= 29) {
 				timing += 1;
 			} else {
 				timing = 30;
 			}
-			*/
 			//collisionDetector.resetTimer ();
 		}
 	}
@@ -49,7 +47,7 @@ public class RewardControllerNoZombie: MonoBehaviour {
 				agent.SetReward (-4f); //Assegno un malus alto 
 				agent.Done ();
 
-			gameObject.transform.position = new Vector3 (Random.Range (-120, 120), transform.position.y, Random.Range (-120, 120));
+				gameObject.transform.position = zombieSpawn [randomZombieSpawn].transform.position;
 			}
 		}
 
@@ -57,7 +55,7 @@ public class RewardControllerNoZombie: MonoBehaviour {
 	private void TryToAttack(){//Serve solo che sia presente
 		agent.SetReward(-4f);
 		agent.Done ();
-		gameObject.transform.position = new Vector3 (Random.Range (-120, 120), transform.position.y, Random.Range (-120, 120));
+		gameObject.transform.position = zombieSpawn [randomZombieSpawn].transform.position;
 	}
 }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CollisionDetectorGroup : MonoBehaviour {
-	public bool zombieNear=false;
+	private bool zombieNear=false;
 	private float timer = 0;
 	private bool chestNear = false;
 
@@ -19,7 +19,7 @@ public class CollisionDetectorGroup : MonoBehaviour {
 		if (other.transform.gameObject.CompareTag ("block") && other.transform.gameObject != gameObject.transform.parent.gameObject) {
 			Debug.Log (other.transform.tag);
 			zombieNear = true;	
-			//mult++;
+			mult++;
 			timer = 0;
 		}
 	}
@@ -35,7 +35,7 @@ public class CollisionDetectorGroup : MonoBehaviour {
 		if (other.transform.gameObject.CompareTag ("block") && other.transform.gameObject != gameObject.transform.parent.gameObject) {
 			zombieNear = false;	
 			if (mult > 1) {
-				//mult--;
+				mult--;
 			}
 			timer = 0;
 		}

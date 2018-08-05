@@ -8,8 +8,8 @@ public class GameController4MA : MonoBehaviour {
 
 	private int randomPlayerSpawn=0 ; //Indice di spawn random per il player
 
-	public GameObject[] playerSpawn; 
-	public GameObject[] chestSpawns;
+	//public GameObject[] playerSpawn; 
+	//public GameObject[] chestSpawns;
 
 	public int deactivedCHests = 0;
 
@@ -19,11 +19,11 @@ public class GameController4MA : MonoBehaviour {
 	private bool flagJ = false; //Indice di scorrimento arry spawns dal basso
 	private int indexJ = 54;
 
-	public Text counterText;
+	//public Text counterText;
 
 	void Start(){
-		//playerSpawn = GameObject.FindGameObjectsWithTag ("playerSpawns");
-		//chestSpawns = GameObject.FindGameObjectsWithTag ("chestSpawn");
+		/*playerSpawn = GameObject.FindGameObjectsWithTag ("playerSpawns");
+		chestSpawns = GameObject.FindGameObjectsWithTag ("chestSpawn");*/
 
 	}
 
@@ -33,13 +33,16 @@ public class GameController4MA : MonoBehaviour {
 	}
 
 	public void ResetChest(GameObject chest){
-		int i = Random.Range (0, chestSpawns.Length);
-		chest.transform.position = chestSpawns [i].transform.position;
+		/*int i = Random.Range (0, chestSpawns.Length);
+		chest.transform.position = chestSpawns [i].transform.position;*/
+		chest.transform.position = new Vector3 (Random.Range(-120,120),chest.transform.position.y,Random.Range(-120,120));
 	}
 
 	//Funzione che respawna il player usando indici univoci per ciascun player 
 	public void RespawnFunction(GameObject player){
-		if (hitCount < playerSpawn.Length) { //Se ho colpito il numero di spawns totali
+		player.transform.position = new Vector3 (Random.Range(-120,120),player.transform.position.y,Random.Range(-120,120));
+
+		/*if (hitCount < playerSpawn.Length) { //Se ho colpito il numero di spawns totali
 			if (!flagI) { // e l'ultimo ad essere stato colpito era in posizione "indexJ"
 				player.transform.position = playerSpawn [indexI].transform.position; //Spawno il player in "indexI"
 				if (indexI <= playerSpawn.Length)//Proteggo l'incremento
@@ -56,7 +59,7 @@ public class GameController4MA : MonoBehaviour {
 				flagJ = true;
 			}
 		} else//Se ho colpito più di TOT volte spawno random
-			player.transform.position = playerSpawn [randomPlayerSpawn].transform.position;
+			player.transform.position = playerSpawn [randomPlayerSpawn].transform.position;*/
 	}
 
 }

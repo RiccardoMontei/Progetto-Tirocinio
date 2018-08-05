@@ -13,17 +13,16 @@ EditorBuildSettings:
     guid: 25c0c9e81e55c4e129e1a5c0ac254100
   - enabled: 0
     path: 
-    guid: 00000000000000000000000000000000
+    guid: 7a4aad6d22fda2d47925421565e4df04
   - enabled: 0
     path: Assets/Machine Learning Agent/unity-environment/Assets/ML-Agents/Examples/Soccer/Scenes/SoccerTwos.unity
     guid: f8055e5dfa04643559678426a82225c1
   - enabled: 0
     path: 
-    guid: 00000000000000000000000000000000
+    guid: e9e87a2d2d456d443899087e0484b2a5
   - enabled: 0
     path: Assets/Scenes/GameScene.unity
     guid: 092bc4564f78965438160f35b96c2661
   - enabled: 1
     path: Assets/VideoScene.unity
     guid: 21faedba7bbef534fb53e7d9649e406a
-  m_configObjects: {}

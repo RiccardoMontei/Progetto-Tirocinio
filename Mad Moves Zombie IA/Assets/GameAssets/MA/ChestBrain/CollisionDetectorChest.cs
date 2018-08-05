@@ -36,7 +36,8 @@ public class CollisionDetectorChest : MonoBehaviour {
 		if(other.transform.gameObject.CompareTag("chest")){
 			chest = other.transform.gameObject;
 			timer = 0;
-			agent.AddReward (2f);
+			agent.SetReward (2f);
+			agent.Done ();
 		}
 
 	}
@@ -53,7 +54,7 @@ public class CollisionDetectorChest : MonoBehaviour {
 	void OnTriggerExit(Collider other){
 		if (other.transform.gameObject.CompareTag ("chest")) {
 			timer = 0;
-			agent.AddReward (-4f);
+			agent.SetReward (-1f);
 			agent.Done ();
 		}
 	}

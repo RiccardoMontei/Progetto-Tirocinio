@@ -17,7 +17,7 @@ public class DynamicZombieAgent : Agent {
 	private Rigidbody zombieRB;  //cached on initialization
 	private Rigidbody playerRB;  //cached on initialization
 
-	public Brain[] brains;
+	//public Brain[] brains;
 	private bool defaultMode = false;
 	private int timerChangeBrain = 20;
 
@@ -28,20 +28,17 @@ public class DynamicZombieAgent : Agent {
 	void Start (){
 		academy = FindObjectOfType<DynamicZombieAccademy> ();
 		//this.brain = brains [1];
-		//StartCoroutine(Cronometro ());
+	//	StartCoroutine(Cronometro ());
 	}
 
 	void Update(){
-		/*
 		if (timerChangeBrain == 0 && defaultMode) {
-			this.brain = brains [1];
+		//	this.brain = brains [1];
 		}
-		*/
 	}
 
 	void FixedUpdate(){
-		/*
-		if (GetComponent<RayPerception> ().objectObserved != null) {
+	/*	if (GetComponent<RayPerception> ().objectObserved != null) {
 			if (GetComponent<RayPerception> ().objectObserved.gameObject.CompareTag ("player")) {
 				defaultMode = false;
 				timerChangeBrain = 20;
@@ -55,11 +52,10 @@ public class DynamicZombieAgent : Agent {
 				this.brain = brains [2];
 				Cronometro ();
 			}
-		}
-		*/
+		}*/
 	}
 
-	private IEnumerator Cronometro(){
+	/*private IEnumerator Cronometro(){
 		while (timerChangeBrain >= 1) {
 			timerChangeBrain--;
 			yield return new WaitForSeconds (1f);
@@ -67,7 +63,7 @@ public class DynamicZombieAgent : Agent {
 		}
 
 		defaultMode = true;
-	}
+	}*/
 
 	public override void InitializeAgent()
 	{
@@ -141,7 +137,7 @@ public class DynamicZombieAgent : Agent {
 
 	public override void AgentAction(float[] vectorAction, string textAction)
 	{
-		AddReward(-1f / agentParameters.maxStep);//Assegno un malus per incentivare la velocità di esecuzione
+		AddReward(-0.1f / agentParameters.maxStep);//Assegno un malus per incentivare la velocità di esecuzione
 		MoveAgent(vectorAction);
 	}
 
@@ -151,19 +147,20 @@ public class DynamicZombieAgent : Agent {
 		case "NoZombieBrain":
 			
 			if (action == 2 || action == 3) {
-				this.SetReward (-5f);
+				this.SetReward (-4f);
 				this.Done ();
 			}
 			break;
 		case "ZombieBrainChest":
 
 			if (action == 2 || action == 3) {
-				this.SetReward (-5f);
+				this.SetReward (-4f);
 				this.Done ();
 			}
 			break;
 		}
 
 	}
-
+	public void TryToAttack(){
+	}
 }
